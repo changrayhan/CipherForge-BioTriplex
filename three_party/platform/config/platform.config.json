@@ -1,0 +1,16 @@
+{
+  "platform": {
+    "mode": "remote",
+    "port": 8600
+  },
+  "nodes": {
+    "U": { "url": "http://127.0.0.1:9001", "timeout_ms": 60000 },
+    "M": { "url": "http://127.0.0.1:9002", "timeout_ms": 60000 },
+    "S": { "url": "http://127.0.0.1:9003", "timeout_ms": 120000 }
+  },
+  "demo": { "train_steps": 3 },
+  "fallback": { "pretrained_checkpoint_id": "clinvar-tinyllama-lora-r8-20260815" },
+  "security": {
+    "hidden_fields": ["raw_text", "label", "sk_M", "prg_seed", "mask_vector", "head_row", "weights"]
+  }
+}

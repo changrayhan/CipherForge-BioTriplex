@@ -1,0 +1,1573 @@
+2026-08-26 08:57:13,294 [INFO] [M] node srv-m-01 listening on http://127.0.0.1:9002 (protocol 1.0)
+2026-08-26 08:57:13,769 [INFO] 127.0.0.1 - "GET /v1/hello HTTP/1.1" 200 -
+2026-08-26 08:57:13,877 [INFO] 127.0.0.1 - "GET /v1/hello HTTP/1.1" 200 -
+2026-08-26 08:57:14,788 [INFO] 127.0.0.1 - "GET /v1/hello HTTP/1.1" 200 -
+2026-08-26 08:57:20,786 [INFO] 127.0.0.1 - "GET /v1/hello HTTP/1.1" 200 -
+2026-08-26 08:57:20,812 [INFO] Generated new BFV keys
+2026-08-26 08:57:20,816 [INFO] [M] action=bfv_keygen stage=INIT step=0 ok=True dt=0.0s
+2026-08-26 08:57:20,820 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+[M-device] device=cuda
+2026-08-26 08:57:20,984 [INFO] Detected model: arch=llama num_layers=22 hidden=2048 vocab=32000 u_layers=11
+2026-08-26 08:57:20,987 [INFO] Loading safetensor weights from /root/hf_cache/hub/models--TinyLlama--TinyLlama-1.1B-Chat-v1.0/snapshots/fe8a4ea1ffedaf415f4da2f062534de366a451e6 (one-time load)
+2026-08-26 08:57:20,992 [INFO] Loaded 201 weights from /root/hf_cache/hub/models--TinyLlama--TinyLlama-1.1B-Chat-v1.0/snapshots/fe8a4ea1ffedaf415f4da2f062534de366a451e6
+2026-08-26 08:57:22,377 [INFO] FlashAttention2 detected: version 2.8.3.post1
+2026-08-26 08:57:22,377 [INFO] Using FlashAttention2 for M shard
+2026-08-26 08:57:28,521 [INFO] Loaded M submodel: 11 layers + 154 LoRA params on cuda (attn=flash_attention_2, gradient_checkpointing=True, deepspeed_zero=disabled)
+2026-08-26 08:57:28,528 [INFO] Generated new BFV keys
+2026-08-26 08:57:28,530 [INFO] PartyM BFV secret key loaded
+2026-08-26 08:57:28,532 [INFO] PartyM LR scheduler: cosine_with_warmup, warmup=100, total=184, peak_lr=2.00e-04
+2026-08-26 08:57:29,929 [INFO] [CryptoWorkerPool] shared.parties.crypto_workers.crypto_m.CryptoMWorker ready: n_workers=1
+2026-08-26 08:57:29,939 [INFO] [CryptoMWorker] init done: poly_degree=4096 plain_bits=30 scale=10000 vec_dim=2048
+2026-08-26 08:57:29,939 [INFO] [CryptoMWorker pid=41528] initialized
+2026-08-26 08:57:29,984 [INFO] Safetensor cache cleared
+2026-08-26 08:57:29,989 [INFO] M key self-check decode=[np.int64(1), np.int64(2), np.int64(3)]
+2026-08-26 08:57:29,990 [INFO] [M] action=init_runtime stage=INIT step=0 ok=True dt=9.2s
+2026-08-26 08:57:29,990 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 08:59:48,515 [INFO] M step=0 RSS=2.10GB gpu_alloc=930MB gpu_reserved=976MB
+/root/miniconda3/lib/python3.12/site-packages/torch/utils/checkpoint.py:86: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+2026-08-26 08:59:49,155 [INFO] M gpu_mem after fwd: 1002MB
+2026-08-26 08:59:49,425 [INFO] [M] action=trunk_forward stage=FORWARD step=0 ok=True dt=0.9s
+2026-08-26 08:59:50,061 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 08:59:56,188 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=0 ok=True dt=0.0s
+2026-08-26 08:59:56,188 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 08:59:56,672 [INFO] [M] action=lora_update stage=UPDATE step=0 ok=True dt=0.5s
+2026-08-26 08:59:56,672 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 08:59:57,608 [INFO] M step=1 RSS=2.90GB gpu_alloc=950MB gpu_reserved=1046MB
+2026-08-26 08:59:57,829 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 08:59:58,100 [INFO] [M] action=trunk_forward stage=FORWARD step=1 ok=True dt=0.5s
+2026-08-26 08:59:58,705 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:00:00,752 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=1 ok=True dt=0.0s
+2026-08-26 09:00:00,752 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:00:01,139 [INFO] [M] action=lora_update stage=UPDATE step=1 ok=True dt=0.4s
+2026-08-26 09:00:01,139 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:00:02,084 [INFO] M step=2 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:00:02,299 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:00:02,560 [INFO] [M] action=trunk_forward stage=FORWARD step=2 ok=True dt=0.5s
+2026-08-26 09:00:03,171 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:00:05,308 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=2 ok=True dt=0.0s
+2026-08-26 09:00:05,308 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:00:05,745 [INFO] [M] action=lora_update stage=UPDATE step=2 ok=True dt=0.4s
+2026-08-26 09:00:05,746 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:00:06,658 [INFO] M step=3 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:00:06,873 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:00:07,131 [INFO] [M] action=trunk_forward stage=FORWARD step=3 ok=True dt=0.5s
+2026-08-26 09:00:07,761 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:00:09,978 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=3 ok=True dt=0.0s
+2026-08-26 09:00:09,978 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:00:10,430 [INFO] [M] action=lora_update stage=UPDATE step=3 ok=True dt=0.4s
+2026-08-26 09:00:10,430 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:00:11,365 [INFO] M step=4 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:00:11,592 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:00:11,854 [INFO] [M] action=trunk_forward stage=FORWARD step=4 ok=True dt=0.5s
+2026-08-26 09:00:12,520 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:00:14,587 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=4 ok=True dt=0.0s
+2026-08-26 09:00:14,587 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:00:15,010 [INFO] [M] action=lora_update stage=UPDATE step=4 ok=True dt=0.4s
+2026-08-26 09:00:15,010 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:00:15,954 [INFO] M step=5 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:00:16,166 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:00:16,419 [INFO] [M] action=trunk_forward stage=FORWARD step=5 ok=True dt=0.5s
+2026-08-26 09:00:17,041 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:00:19,287 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=5 ok=True dt=0.0s
+2026-08-26 09:00:19,287 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:00:19,713 [INFO] [M] action=lora_update stage=UPDATE step=5 ok=True dt=0.4s
+2026-08-26 09:00:19,714 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:00:20,676 [INFO] M step=6 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:00:20,886 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:00:21,142 [INFO] [M] action=trunk_forward stage=FORWARD step=6 ok=True dt=0.5s
+2026-08-26 09:00:21,760 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:00:24,004 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=6 ok=True dt=0.0s
+2026-08-26 09:00:24,004 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:00:24,443 [INFO] [M] action=lora_update stage=UPDATE step=6 ok=True dt=0.4s
+2026-08-26 09:00:24,443 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:00:25,419 [INFO] M step=7 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:00:25,631 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:00:25,881 [INFO] [M] action=trunk_forward stage=FORWARD step=7 ok=True dt=0.5s
+2026-08-26 09:00:26,510 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:00:28,680 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=7 ok=True dt=0.0s
+2026-08-26 09:00:28,680 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:00:29,099 [INFO] [M] action=lora_update stage=UPDATE step=7 ok=True dt=0.4s
+2026-08-26 09:00:29,099 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:00:30,025 [INFO] M step=8 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:00:30,239 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:00:30,497 [INFO] [M] action=trunk_forward stage=FORWARD step=8 ok=True dt=0.5s
+2026-08-26 09:00:31,135 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:00:33,311 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=8 ok=True dt=0.0s
+2026-08-26 09:00:33,312 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:00:33,724 [INFO] [M] action=lora_update stage=UPDATE step=8 ok=True dt=0.4s
+2026-08-26 09:00:33,724 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:00:34,644 [INFO] M step=9 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:00:34,869 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:00:35,156 [INFO] [M] action=trunk_forward stage=FORWARD step=9 ok=True dt=0.5s
+2026-08-26 09:00:35,809 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:00:38,026 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=9 ok=True dt=0.0s
+2026-08-26 09:00:38,026 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:00:38,453 [INFO] [M] action=lora_update stage=UPDATE step=9 ok=True dt=0.4s
+2026-08-26 09:00:38,453 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:00:39,399 [INFO] M step=10 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:00:39,686 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:00:39,953 [INFO] [M] action=trunk_forward stage=FORWARD step=10 ok=True dt=0.6s
+2026-08-26 09:00:40,575 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:00:42,850 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=10 ok=True dt=0.0s
+2026-08-26 09:00:42,850 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:00:43,293 [INFO] [M] action=lora_update stage=UPDATE step=10 ok=True dt=0.4s
+2026-08-26 09:00:43,293 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:00:44,253 [INFO] M step=11 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:00:44,497 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:00:44,767 [INFO] [M] action=trunk_forward stage=FORWARD step=11 ok=True dt=0.5s
+2026-08-26 09:00:45,386 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:00:47,598 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=11 ok=True dt=0.0s
+2026-08-26 09:00:47,598 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:00:48,013 [INFO] [M] action=lora_update stage=UPDATE step=11 ok=True dt=0.4s
+2026-08-26 09:00:48,013 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:00:49,052 [INFO] M step=12 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:00:49,295 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:00:49,585 [INFO] [M] action=trunk_forward stage=FORWARD step=12 ok=True dt=0.5s
+2026-08-26 09:00:50,262 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:00:52,429 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=12 ok=True dt=0.0s
+2026-08-26 09:00:52,430 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:00:52,860 [INFO] [M] action=lora_update stage=UPDATE step=12 ok=True dt=0.4s
+2026-08-26 09:00:52,860 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:00:53,765 [INFO] M step=13 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:00:53,979 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:00:54,239 [INFO] [M] action=trunk_forward stage=FORWARD step=13 ok=True dt=0.5s
+2026-08-26 09:00:54,864 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:00:57,074 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=13 ok=True dt=0.0s
+2026-08-26 09:00:57,075 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:00:57,511 [INFO] [M] action=lora_update stage=UPDATE step=13 ok=True dt=0.4s
+2026-08-26 09:00:57,512 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:00:58,407 [INFO] M step=14 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:00:58,621 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:00:58,876 [INFO] [M] action=trunk_forward stage=FORWARD step=14 ok=True dt=0.5s
+2026-08-26 09:00:59,491 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:01:01,672 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=14 ok=True dt=0.0s
+2026-08-26 09:01:01,672 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:01:02,100 [INFO] [M] action=lora_update stage=UPDATE step=14 ok=True dt=0.4s
+2026-08-26 09:01:02,100 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:01:03,059 [INFO] M step=15 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:01:03,296 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:01:03,590 [INFO] [M] action=trunk_forward stage=FORWARD step=15 ok=True dt=0.5s
+2026-08-26 09:01:04,219 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:01:06,463 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=15 ok=True dt=0.0s
+2026-08-26 09:01:06,464 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:01:06,890 [INFO] [M] action=lora_update stage=UPDATE step=15 ok=True dt=0.4s
+2026-08-26 09:01:06,890 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:01:07,815 [INFO] M step=16 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:01:08,032 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:01:08,289 [INFO] [M] action=trunk_forward stage=FORWARD step=16 ok=True dt=0.5s
+2026-08-26 09:01:08,981 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:01:11,218 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=16 ok=True dt=0.0s
+2026-08-26 09:01:11,218 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:01:11,594 [INFO] [M] action=lora_update stage=UPDATE step=16 ok=True dt=0.4s
+2026-08-26 09:01:11,594 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:01:12,536 [INFO] M step=17 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:01:12,751 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:01:13,015 [INFO] [M] action=trunk_forward stage=FORWARD step=17 ok=True dt=0.5s
+2026-08-26 09:01:13,637 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:01:15,749 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=17 ok=True dt=0.0s
+2026-08-26 09:01:15,749 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:01:16,164 [INFO] [M] action=lora_update stage=UPDATE step=17 ok=True dt=0.4s
+2026-08-26 09:01:16,164 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:01:17,088 [INFO] M step=18 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:01:17,300 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:01:17,558 [INFO] [M] action=trunk_forward stage=FORWARD step=18 ok=True dt=0.5s
+2026-08-26 09:01:18,189 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:01:20,403 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=18 ok=True dt=0.0s
+2026-08-26 09:01:20,403 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:01:20,825 [INFO] [M] action=lora_update stage=UPDATE step=18 ok=True dt=0.4s
+2026-08-26 09:01:20,825 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:01:21,790 [INFO] M step=19 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:01:22,006 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:01:22,264 [INFO] [M] action=trunk_forward stage=FORWARD step=19 ok=True dt=0.5s
+2026-08-26 09:01:22,896 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:01:25,162 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=19 ok=True dt=0.0s
+2026-08-26 09:01:25,162 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:01:25,599 [INFO] [M] action=lora_update stage=UPDATE step=19 ok=True dt=0.4s
+2026-08-26 09:01:25,599 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:01:26,615 [INFO] M step=20 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:01:26,827 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:01:27,090 [INFO] [M] action=trunk_forward stage=FORWARD step=20 ok=True dt=0.5s
+2026-08-26 09:01:27,742 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:01:29,826 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=20 ok=True dt=0.0s
+2026-08-26 09:01:29,827 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:01:30,231 [INFO] [M] action=lora_update stage=UPDATE step=20 ok=True dt=0.4s
+2026-08-26 09:01:30,231 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:01:31,223 [INFO] M step=21 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:01:31,451 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:01:31,732 [INFO] [M] action=trunk_forward stage=FORWARD step=21 ok=True dt=0.5s
+2026-08-26 09:01:32,410 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:01:34,662 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=21 ok=True dt=0.0s
+2026-08-26 09:01:34,662 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:01:35,098 [INFO] [M] action=lora_update stage=UPDATE step=21 ok=True dt=0.4s
+2026-08-26 09:01:35,099 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:01:36,112 [INFO] M step=22 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:01:36,347 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:01:36,642 [INFO] [M] action=trunk_forward stage=FORWARD step=22 ok=True dt=0.5s
+2026-08-26 09:01:37,310 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:01:39,655 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=22 ok=True dt=0.0s
+2026-08-26 09:01:39,655 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:01:40,096 [INFO] [M] action=lora_update stage=UPDATE step=22 ok=True dt=0.4s
+2026-08-26 09:01:40,096 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:01:41,064 [INFO] M step=23 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:01:41,287 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:01:41,547 [INFO] [M] action=trunk_forward stage=FORWARD step=23 ok=True dt=0.5s
+2026-08-26 09:01:42,173 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:01:44,455 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=23 ok=True dt=0.0s
+2026-08-26 09:01:44,455 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:01:44,889 [INFO] [M] action=lora_update stage=UPDATE step=23 ok=True dt=0.4s
+2026-08-26 09:01:44,889 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:01:45,858 [INFO] M step=24 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:01:46,073 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:01:46,324 [INFO] [M] action=trunk_forward stage=FORWARD step=24 ok=True dt=0.5s
+2026-08-26 09:01:46,988 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:01:49,265 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=24 ok=True dt=0.0s
+2026-08-26 09:01:49,265 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:01:49,666 [INFO] [M] action=lora_update stage=UPDATE step=24 ok=True dt=0.4s
+2026-08-26 09:01:49,666 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:01:50,602 [INFO] M step=25 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:01:50,830 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:01:51,100 [INFO] [M] action=trunk_forward stage=FORWARD step=25 ok=True dt=0.5s
+2026-08-26 09:01:51,774 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:01:54,015 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=25 ok=True dt=0.0s
+2026-08-26 09:01:54,016 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:01:54,460 [INFO] [M] action=lora_update stage=UPDATE step=25 ok=True dt=0.4s
+2026-08-26 09:01:54,460 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:01:55,425 [INFO] M step=26 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:01:55,660 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:01:55,946 [INFO] [M] action=trunk_forward stage=FORWARD step=26 ok=True dt=0.5s
+2026-08-26 09:01:56,592 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:01:58,939 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=26 ok=True dt=0.0s
+2026-08-26 09:01:58,939 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:01:59,371 [INFO] [M] action=lora_update stage=UPDATE step=26 ok=True dt=0.4s
+2026-08-26 09:01:59,372 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:02:00,360 [INFO] M step=27 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:02:00,587 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:02:00,869 [INFO] [M] action=trunk_forward stage=FORWARD step=27 ok=True dt=0.5s
+2026-08-26 09:02:01,515 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:02:03,768 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=27 ok=True dt=0.0s
+2026-08-26 09:02:03,768 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:02:04,199 [INFO] [M] action=lora_update stage=UPDATE step=27 ok=True dt=0.4s
+2026-08-26 09:02:04,199 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:02:05,189 [INFO] M step=28 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:02:05,403 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:02:05,661 [INFO] [M] action=trunk_forward stage=FORWARD step=28 ok=True dt=0.5s
+2026-08-26 09:02:06,282 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:02:08,469 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=28 ok=True dt=0.0s
+2026-08-26 09:02:08,469 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:02:08,911 [INFO] [M] action=lora_update stage=UPDATE step=28 ok=True dt=0.4s
+2026-08-26 09:02:08,911 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:02:09,882 [INFO] M step=29 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:02:10,124 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:02:10,389 [INFO] [M] action=trunk_forward stage=FORWARD step=29 ok=True dt=0.5s
+2026-08-26 09:02:11,054 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:02:13,278 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=29 ok=True dt=0.0s
+2026-08-26 09:02:13,278 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:02:13,708 [INFO] [M] action=lora_update stage=UPDATE step=29 ok=True dt=0.4s
+2026-08-26 09:02:13,709 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:02:14,770 [INFO] M step=30 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:02:14,996 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:02:15,280 [INFO] [M] action=trunk_forward stage=FORWARD step=30 ok=True dt=0.5s
+2026-08-26 09:02:15,948 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:02:18,252 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=30 ok=True dt=0.0s
+2026-08-26 09:02:18,252 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:02:18,687 [INFO] [M] action=lora_update stage=UPDATE step=30 ok=True dt=0.4s
+2026-08-26 09:02:18,687 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:02:19,659 [INFO] M step=31 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:02:19,873 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:02:20,138 [INFO] [M] action=trunk_forward stage=FORWARD step=31 ok=True dt=0.5s
+2026-08-26 09:02:20,756 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:02:23,018 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=31 ok=True dt=0.0s
+2026-08-26 09:02:23,018 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:02:23,450 [INFO] [M] action=lora_update stage=UPDATE step=31 ok=True dt=0.4s
+2026-08-26 09:02:23,450 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:02:24,410 [INFO] M step=32 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:02:24,624 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:02:24,879 [INFO] [M] action=trunk_forward stage=FORWARD step=32 ok=True dt=0.5s
+2026-08-26 09:02:25,493 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:02:27,682 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=32 ok=True dt=0.0s
+2026-08-26 09:02:27,682 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:02:28,123 [INFO] [M] action=lora_update stage=UPDATE step=32 ok=True dt=0.4s
+2026-08-26 09:02:28,123 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:02:29,054 [INFO] M step=33 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:02:29,275 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:02:29,535 [INFO] [M] action=trunk_forward stage=FORWARD step=33 ok=True dt=0.5s
+2026-08-26 09:02:30,194 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:02:32,413 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=33 ok=True dt=0.0s
+2026-08-26 09:02:32,413 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:02:32,796 [INFO] [M] action=lora_update stage=UPDATE step=33 ok=True dt=0.4s
+2026-08-26 09:02:32,797 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:02:33,755 [INFO] M step=34 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:02:33,963 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:02:34,223 [INFO] [M] action=trunk_forward stage=FORWARD step=34 ok=True dt=0.5s
+2026-08-26 09:02:34,844 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:02:37,165 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=34 ok=True dt=0.0s
+2026-08-26 09:02:37,165 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:02:37,600 [INFO] [M] action=lora_update stage=UPDATE step=34 ok=True dt=0.4s
+2026-08-26 09:02:37,600 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:02:38,584 [INFO] M step=35 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:02:38,816 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:02:39,088 [INFO] [M] action=trunk_forward stage=FORWARD step=35 ok=True dt=0.5s
+2026-08-26 09:02:39,710 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:02:41,986 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=35 ok=True dt=0.0s
+2026-08-26 09:02:41,986 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:02:42,429 [INFO] [M] action=lora_update stage=UPDATE step=35 ok=True dt=0.4s
+2026-08-26 09:02:42,429 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:02:43,468 [INFO] M step=36 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:02:43,691 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:02:43,953 [INFO] [M] action=trunk_forward stage=FORWARD step=36 ok=True dt=0.5s
+2026-08-26 09:02:44,564 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:02:46,777 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=36 ok=True dt=0.0s
+2026-08-26 09:02:46,777 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:02:47,189 [INFO] [M] action=lora_update stage=UPDATE step=36 ok=True dt=0.4s
+2026-08-26 09:02:47,190 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:02:48,188 [INFO] M step=37 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:02:48,417 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:02:48,687 [INFO] [M] action=trunk_forward stage=FORWARD step=37 ok=True dt=0.5s
+2026-08-26 09:02:49,328 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:02:51,490 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=37 ok=True dt=0.0s
+2026-08-26 09:02:51,490 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:02:51,908 [INFO] [M] action=lora_update stage=UPDATE step=37 ok=True dt=0.4s
+2026-08-26 09:02:51,909 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:02:52,842 [INFO] M step=38 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:02:53,066 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:02:53,336 [INFO] [M] action=trunk_forward stage=FORWARD step=38 ok=True dt=0.5s
+2026-08-26 09:02:53,951 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:02:56,173 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=38 ok=True dt=0.0s
+2026-08-26 09:02:56,173 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:02:56,589 [INFO] [M] action=lora_update stage=UPDATE step=38 ok=True dt=0.4s
+2026-08-26 09:02:56,589 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:02:57,616 [INFO] M step=39 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:02:57,871 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:02:58,156 [INFO] [M] action=trunk_forward stage=FORWARD step=39 ok=True dt=0.5s
+2026-08-26 09:02:58,812 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:03:01,109 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=39 ok=True dt=0.0s
+2026-08-26 09:03:01,109 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:03:01,531 [INFO] [M] action=lora_update stage=UPDATE step=39 ok=True dt=0.4s
+2026-08-26 09:03:01,531 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:03:02,561 [INFO] M step=40 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:03:02,777 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:03:03,036 [INFO] [M] action=trunk_forward stage=FORWARD step=40 ok=True dt=0.5s
+2026-08-26 09:03:03,643 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:03:05,896 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=40 ok=True dt=0.0s
+2026-08-26 09:03:05,896 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:03:06,329 [INFO] [M] action=lora_update stage=UPDATE step=40 ok=True dt=0.4s
+2026-08-26 09:03:06,330 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:03:07,274 [INFO] M step=41 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:03:07,492 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:03:07,750 [INFO] [M] action=trunk_forward stage=FORWARD step=41 ok=True dt=0.5s
+2026-08-26 09:03:08,365 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:03:10,561 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=41 ok=True dt=0.0s
+2026-08-26 09:03:10,561 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:03:10,936 [INFO] [M] action=lora_update stage=UPDATE step=41 ok=True dt=0.4s
+2026-08-26 09:03:10,936 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:03:11,868 [INFO] M step=42 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:03:12,088 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:03:12,350 [INFO] [M] action=trunk_forward stage=FORWARD step=42 ok=True dt=0.5s
+2026-08-26 09:03:12,998 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:03:15,235 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=42 ok=True dt=0.0s
+2026-08-26 09:03:15,235 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:03:15,642 [INFO] [M] action=lora_update stage=UPDATE step=42 ok=True dt=0.4s
+2026-08-26 09:03:15,642 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:03:16,598 [INFO] M step=43 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:03:16,855 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:03:17,148 [INFO] [M] action=trunk_forward stage=FORWARD step=43 ok=True dt=0.6s
+2026-08-26 09:03:17,770 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:03:20,148 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=43 ok=True dt=0.0s
+2026-08-26 09:03:20,148 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:03:20,583 [INFO] [M] action=lora_update stage=UPDATE step=43 ok=True dt=0.4s
+2026-08-26 09:03:20,583 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:03:21,549 [INFO] M step=44 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:03:21,765 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:03:22,025 [INFO] [M] action=trunk_forward stage=FORWARD step=44 ok=True dt=0.5s
+2026-08-26 09:03:22,659 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:03:24,915 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=44 ok=True dt=0.0s
+2026-08-26 09:03:24,915 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:03:25,331 [INFO] [M] action=lora_update stage=UPDATE step=44 ok=True dt=0.4s
+2026-08-26 09:03:25,331 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:03:26,268 [INFO] M step=45 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:03:26,480 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:03:26,735 [INFO] [M] action=trunk_forward stage=FORWARD step=45 ok=True dt=0.5s
+2026-08-26 09:03:27,343 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:03:29,504 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=45 ok=True dt=0.0s
+2026-08-26 09:03:29,505 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:03:29,919 [INFO] [M] action=lora_update stage=UPDATE step=45 ok=True dt=0.4s
+2026-08-26 09:03:29,920 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:03:30,918 [INFO] M step=46 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:03:31,141 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:03:31,401 [INFO] [M] action=trunk_forward stage=FORWARD step=46 ok=True dt=0.5s
+2026-08-26 09:03:32,042 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:03:34,280 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=46 ok=True dt=0.0s
+2026-08-26 09:03:34,280 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:03:34,695 [INFO] [M] action=lora_update stage=UPDATE step=46 ok=True dt=0.4s
+2026-08-26 09:03:34,695 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:03:35,717 [INFO] M step=47 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:03:35,937 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:03:36,207 [INFO] [M] action=trunk_forward stage=FORWARD step=47 ok=True dt=0.5s
+2026-08-26 09:03:36,829 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:03:39,044 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=47 ok=True dt=0.0s
+2026-08-26 09:03:39,044 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:03:39,462 [INFO] [M] action=lora_update stage=UPDATE step=47 ok=True dt=0.4s
+2026-08-26 09:03:39,462 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:03:40,511 [INFO] M step=48 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:03:40,732 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:03:41,013 [INFO] [M] action=trunk_forward stage=FORWARD step=48 ok=True dt=0.5s
+2026-08-26 09:03:41,680 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:03:43,910 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=48 ok=True dt=0.0s
+2026-08-26 09:03:43,910 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:03:44,338 [INFO] [M] action=lora_update stage=UPDATE step=48 ok=True dt=0.4s
+2026-08-26 09:03:44,339 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:03:45,277 [INFO] M step=49 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:03:45,492 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:03:45,747 [INFO] [M] action=trunk_forward stage=FORWARD step=49 ok=True dt=0.5s
+2026-08-26 09:03:46,354 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:03:48,513 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=49 ok=True dt=0.0s
+2026-08-26 09:03:48,513 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:03:48,932 [INFO] [M] action=lora_update stage=UPDATE step=49 ok=True dt=0.4s
+2026-08-26 09:03:48,932 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:03:49,906 [INFO] M step=50 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:03:50,126 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:03:50,395 [INFO] [M] action=trunk_forward stage=FORWARD step=50 ok=True dt=0.5s
+2026-08-26 09:03:51,011 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:03:53,173 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=50 ok=True dt=0.0s
+2026-08-26 09:03:53,173 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:03:53,599 [INFO] [M] action=lora_update stage=UPDATE step=50 ok=True dt=0.4s
+2026-08-26 09:03:53,599 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:03:54,697 [INFO] M step=51 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:03:54,916 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:03:55,181 [INFO] [M] action=trunk_forward stage=FORWARD step=51 ok=True dt=0.5s
+2026-08-26 09:03:55,841 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:03:58,052 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=51 ok=True dt=0.0s
+2026-08-26 09:03:58,053 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:03:58,477 [INFO] [M] action=lora_update stage=UPDATE step=51 ok=True dt=0.4s
+2026-08-26 09:03:58,477 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:03:59,483 [INFO] M step=52 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:03:59,705 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:03:59,970 [INFO] [M] action=trunk_forward stage=FORWARD step=52 ok=True dt=0.5s
+2026-08-26 09:04:00,598 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:04:02,807 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=52 ok=True dt=0.0s
+2026-08-26 09:04:02,808 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:04:03,266 [INFO] [M] action=lora_update stage=UPDATE step=52 ok=True dt=0.5s
+2026-08-26 09:04:03,266 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:04:04,244 [INFO] M step=53 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:04:04,463 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:04:04,723 [INFO] [M] action=trunk_forward stage=FORWARD step=53 ok=True dt=0.5s
+2026-08-26 09:04:05,334 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:04:07,670 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=53 ok=True dt=0.0s
+2026-08-26 09:04:07,670 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:04:08,105 [INFO] [M] action=lora_update stage=UPDATE step=53 ok=True dt=0.4s
+2026-08-26 09:04:08,105 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:04:09,134 [INFO] M step=54 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:04:09,362 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:04:09,631 [INFO] [M] action=trunk_forward stage=FORWARD step=54 ok=True dt=0.5s
+2026-08-26 09:04:10,287 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:04:12,549 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=54 ok=True dt=0.0s
+2026-08-26 09:04:12,549 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:04:12,962 [INFO] [M] action=lora_update stage=UPDATE step=54 ok=True dt=0.4s
+2026-08-26 09:04:12,963 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:04:13,924 [INFO] M step=55 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:04:14,163 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:04:14,419 [INFO] [M] action=trunk_forward stage=FORWARD step=55 ok=True dt=0.5s
+2026-08-26 09:04:15,077 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:04:17,363 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=55 ok=True dt=0.0s
+2026-08-26 09:04:17,363 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:04:17,778 [INFO] [M] action=lora_update stage=UPDATE step=55 ok=True dt=0.4s
+2026-08-26 09:04:17,778 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:04:18,764 [INFO] M step=56 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:04:18,979 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:04:19,241 [INFO] [M] action=trunk_forward stage=FORWARD step=56 ok=True dt=0.5s
+2026-08-26 09:04:19,884 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:04:22,069 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=56 ok=True dt=0.0s
+2026-08-26 09:04:22,070 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:04:22,526 [INFO] [M] action=lora_update stage=UPDATE step=56 ok=True dt=0.5s
+2026-08-26 09:04:22,526 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:04:23,468 [INFO] M step=57 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:04:23,683 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:04:23,945 [INFO] [M] action=trunk_forward stage=FORWARD step=57 ok=True dt=0.5s
+2026-08-26 09:04:24,558 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:04:26,803 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=57 ok=True dt=0.0s
+2026-08-26 09:04:26,804 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:04:27,236 [INFO] [M] action=lora_update stage=UPDATE step=57 ok=True dt=0.4s
+2026-08-26 09:04:27,236 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:04:28,200 [INFO] M step=58 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:04:28,418 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:04:28,679 [INFO] [M] action=trunk_forward stage=FORWARD step=58 ok=True dt=0.5s
+2026-08-26 09:04:29,299 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:04:31,505 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=58 ok=True dt=0.0s
+2026-08-26 09:04:31,505 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:04:31,881 [INFO] [M] action=lora_update stage=UPDATE step=58 ok=True dt=0.4s
+2026-08-26 09:04:31,882 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:04:32,840 [INFO] M step=59 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:04:33,072 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:04:33,331 [INFO] [M] action=trunk_forward stage=FORWARD step=59 ok=True dt=0.5s
+2026-08-26 09:04:33,949 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:04:36,214 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=59 ok=True dt=0.0s
+2026-08-26 09:04:36,214 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:04:36,641 [INFO] [M] action=lora_update stage=UPDATE step=59 ok=True dt=0.4s
+2026-08-26 09:04:36,641 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:04:37,727 [INFO] M step=60 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:04:37,956 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:04:38,229 [INFO] [M] action=trunk_forward stage=FORWARD step=60 ok=True dt=0.5s
+2026-08-26 09:04:38,874 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:04:41,293 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=60 ok=True dt=0.0s
+2026-08-26 09:04:41,294 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:04:41,739 [INFO] [M] action=lora_update stage=UPDATE step=60 ok=True dt=0.4s
+2026-08-26 09:04:41,739 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:04:42,711 [INFO] M step=61 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:04:42,948 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:04:43,230 [INFO] [M] action=trunk_forward stage=FORWARD step=61 ok=True dt=0.5s
+2026-08-26 09:04:43,876 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:04:46,377 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=61 ok=True dt=0.0s
+2026-08-26 09:04:46,377 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:04:46,818 [INFO] [M] action=lora_update stage=UPDATE step=61 ok=True dt=0.4s
+2026-08-26 09:04:46,819 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:04:47,876 [INFO] M step=62 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:04:48,098 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:04:48,364 [INFO] [M] action=trunk_forward stage=FORWARD step=62 ok=True dt=0.5s
+2026-08-26 09:04:49,006 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:04:51,307 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=62 ok=True dt=0.0s
+2026-08-26 09:04:51,307 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:04:51,680 [INFO] [M] action=lora_update stage=UPDATE step=62 ok=True dt=0.4s
+2026-08-26 09:04:51,680 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:04:52,593 [INFO] M step=63 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:04:52,816 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:04:53,071 [INFO] [M] action=trunk_forward stage=FORWARD step=63 ok=True dt=0.5s
+2026-08-26 09:04:53,675 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:04:55,933 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=63 ok=True dt=0.0s
+2026-08-26 09:04:55,933 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:04:56,339 [INFO] [M] action=lora_update stage=UPDATE step=63 ok=True dt=0.4s
+2026-08-26 09:04:56,339 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:04:57,334 [INFO] M step=64 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:04:57,544 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:04:57,800 [INFO] [M] action=trunk_forward stage=FORWARD step=64 ok=True dt=0.5s
+2026-08-26 09:04:58,414 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:05:00,589 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=64 ok=True dt=0.0s
+2026-08-26 09:05:00,589 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:05:01,017 [INFO] [M] action=lora_update stage=UPDATE step=64 ok=True dt=0.4s
+2026-08-26 09:05:01,017 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:05:01,984 [INFO] M step=65 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:05:02,195 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:05:02,448 [INFO] [M] action=trunk_forward stage=FORWARD step=65 ok=True dt=0.5s
+2026-08-26 09:05:03,057 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:05:05,329 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=65 ok=True dt=0.0s
+2026-08-26 09:05:05,329 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:05:05,755 [INFO] [M] action=lora_update stage=UPDATE step=65 ok=True dt=0.4s
+2026-08-26 09:05:05,755 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:05:06,716 [INFO] M step=66 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:05:06,930 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:05:07,186 [INFO] [M] action=trunk_forward stage=FORWARD step=66 ok=True dt=0.5s
+2026-08-26 09:05:07,816 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:05:09,997 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=66 ok=True dt=0.0s
+2026-08-26 09:05:09,997 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:05:10,425 [INFO] [M] action=lora_update stage=UPDATE step=66 ok=True dt=0.4s
+2026-08-26 09:05:10,426 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:05:11,365 [INFO] M step=67 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:05:11,606 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:05:11,867 [INFO] [M] action=trunk_forward stage=FORWARD step=67 ok=True dt=0.5s
+2026-08-26 09:05:12,532 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:05:14,600 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=67 ok=True dt=0.0s
+2026-08-26 09:05:14,600 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:05:15,029 [INFO] [M] action=lora_update stage=UPDATE step=67 ok=True dt=0.4s
+2026-08-26 09:05:15,029 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:05:16,011 [INFO] M step=68 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:05:16,232 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:05:16,497 [INFO] [M] action=trunk_forward stage=FORWARD step=68 ok=True dt=0.5s
+2026-08-26 09:05:17,119 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:05:19,327 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=68 ok=True dt=0.0s
+2026-08-26 09:05:19,327 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:05:19,756 [INFO] [M] action=lora_update stage=UPDATE step=68 ok=True dt=0.4s
+2026-08-26 09:05:19,756 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:05:20,761 [INFO] M step=69 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:05:20,976 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:05:21,233 [INFO] [M] action=trunk_forward stage=FORWARD step=69 ok=True dt=0.5s
+2026-08-26 09:05:21,841 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:05:24,032 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=69 ok=True dt=0.0s
+2026-08-26 09:05:24,032 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:05:24,475 [INFO] [M] action=lora_update stage=UPDATE step=69 ok=True dt=0.4s
+2026-08-26 09:05:24,475 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:05:25,410 [INFO] M step=70 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:05:25,630 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:05:25,923 [INFO] [M] action=trunk_forward stage=FORWARD step=70 ok=True dt=0.5s
+2026-08-26 09:05:26,545 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:05:28,761 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=70 ok=True dt=0.0s
+2026-08-26 09:05:28,761 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:05:29,182 [INFO] [M] action=lora_update stage=UPDATE step=70 ok=True dt=0.4s
+2026-08-26 09:05:29,182 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:05:30,178 [INFO] M step=71 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:05:30,430 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:05:30,699 [INFO] [M] action=trunk_forward stage=FORWARD step=71 ok=True dt=0.5s
+2026-08-26 09:05:31,345 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:05:33,519 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=71 ok=True dt=0.0s
+2026-08-26 09:05:33,519 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:05:33,930 [INFO] [M] action=lora_update stage=UPDATE step=71 ok=True dt=0.4s
+2026-08-26 09:05:33,931 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:05:34,878 [INFO] M step=72 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:05:35,138 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:05:35,394 [INFO] [M] action=trunk_forward stage=FORWARD step=72 ok=True dt=0.5s
+2026-08-26 09:05:36,037 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:05:38,231 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=72 ok=True dt=0.0s
+2026-08-26 09:05:38,231 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:05:38,683 [INFO] [M] action=lora_update stage=UPDATE step=72 ok=True dt=0.4s
+2026-08-26 09:05:38,683 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:05:39,684 [INFO] M step=73 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:05:39,893 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:05:40,148 [INFO] [M] action=trunk_forward stage=FORWARD step=73 ok=True dt=0.5s
+2026-08-26 09:05:40,755 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:05:42,948 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=73 ok=True dt=0.0s
+2026-08-26 09:05:42,948 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:05:43,338 [INFO] [M] action=lora_update stage=UPDATE step=73 ok=True dt=0.4s
+2026-08-26 09:05:43,338 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:05:44,340 [INFO] M step=74 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:05:44,552 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:05:44,809 [INFO] [M] action=trunk_forward stage=FORWARD step=74 ok=True dt=0.5s
+2026-08-26 09:05:45,447 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:05:47,704 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=74 ok=True dt=0.0s
+2026-08-26 09:05:47,704 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:05:48,128 [INFO] [M] action=lora_update stage=UPDATE step=74 ok=True dt=0.4s
+2026-08-26 09:05:48,128 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:05:49,079 [INFO] M step=75 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:05:49,302 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:05:49,583 [INFO] [M] action=trunk_forward stage=FORWARD step=75 ok=True dt=0.5s
+2026-08-26 09:05:50,245 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:05:52,430 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=75 ok=True dt=0.0s
+2026-08-26 09:05:52,430 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:05:52,856 [INFO] [M] action=lora_update stage=UPDATE step=75 ok=True dt=0.4s
+2026-08-26 09:05:52,856 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:05:53,737 [INFO] M step=76 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:05:53,944 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:05:54,196 [INFO] [M] action=trunk_forward stage=FORWARD step=76 ok=True dt=0.5s
+2026-08-26 09:05:54,806 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:05:57,016 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=76 ok=True dt=0.0s
+2026-08-26 09:05:57,016 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:05:57,429 [INFO] [M] action=lora_update stage=UPDATE step=76 ok=True dt=0.4s
+2026-08-26 09:05:57,429 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:05:58,369 [INFO] M step=77 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:05:58,583 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:05:58,839 [INFO] [M] action=trunk_forward stage=FORWARD step=77 ok=True dt=0.5s
+2026-08-26 09:05:59,468 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:06:01,703 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=77 ok=True dt=0.0s
+2026-08-26 09:06:01,703 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:06:02,125 [INFO] [M] action=lora_update stage=UPDATE step=77 ok=True dt=0.4s
+2026-08-26 09:06:02,125 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:06:03,055 [INFO] M step=78 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:06:03,268 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:06:03,523 [INFO] [M] action=trunk_forward stage=FORWARD step=78 ok=True dt=0.5s
+2026-08-26 09:06:04,129 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:06:06,390 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=78 ok=True dt=0.0s
+2026-08-26 09:06:06,390 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:06:06,820 [INFO] [M] action=lora_update stage=UPDATE step=78 ok=True dt=0.4s
+2026-08-26 09:06:06,820 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:06:07,774 [INFO] M step=79 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:06:07,986 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:06:08,244 [INFO] [M] action=trunk_forward stage=FORWARD step=79 ok=True dt=0.5s
+2026-08-26 09:06:08,851 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:06:11,103 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=79 ok=True dt=0.0s
+2026-08-26 09:06:11,103 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:06:11,509 [INFO] [M] action=lora_update stage=UPDATE step=79 ok=True dt=0.4s
+2026-08-26 09:06:11,510 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:06:12,510 [INFO] M step=80 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:06:12,728 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:06:12,997 [INFO] [M] action=trunk_forward stage=FORWARD step=80 ok=True dt=0.5s
+2026-08-26 09:06:13,628 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:06:15,806 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=80 ok=True dt=0.0s
+2026-08-26 09:06:15,807 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:06:16,229 [INFO] [M] action=lora_update stage=UPDATE step=80 ok=True dt=0.4s
+2026-08-26 09:06:16,229 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:06:17,225 [INFO] M step=81 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:06:17,436 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:06:17,691 [INFO] [M] action=trunk_forward stage=FORWARD step=81 ok=True dt=0.5s
+2026-08-26 09:06:18,303 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:06:20,460 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=81 ok=True dt=0.0s
+2026-08-26 09:06:20,461 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:06:20,884 [INFO] [M] action=lora_update stage=UPDATE step=81 ok=True dt=0.4s
+2026-08-26 09:06:20,884 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:06:21,820 [INFO] M step=82 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:06:22,041 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:06:22,297 [INFO] [M] action=trunk_forward stage=FORWARD step=82 ok=True dt=0.5s
+2026-08-26 09:06:22,906 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:06:25,091 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=82 ok=True dt=0.0s
+2026-08-26 09:06:25,091 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:06:25,523 [INFO] [M] action=lora_update stage=UPDATE step=82 ok=True dt=0.4s
+2026-08-26 09:06:25,523 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:06:26,447 [INFO] M step=83 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:06:26,694 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:06:26,968 [INFO] [M] action=trunk_forward stage=FORWARD step=83 ok=True dt=0.5s
+2026-08-26 09:06:27,601 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:06:29,855 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=83 ok=True dt=0.0s
+2026-08-26 09:06:29,855 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:06:30,249 [INFO] [M] action=lora_update stage=UPDATE step=83 ok=True dt=0.4s
+2026-08-26 09:06:30,249 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:06:31,205 [INFO] M step=84 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:06:31,434 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:06:31,693 [INFO] [M] action=trunk_forward stage=FORWARD step=84 ok=True dt=0.5s
+2026-08-26 09:06:32,332 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:06:34,621 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=84 ok=True dt=0.0s
+2026-08-26 09:06:34,621 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:06:35,030 [INFO] [M] action=lora_update stage=UPDATE step=84 ok=True dt=0.4s
+2026-08-26 09:06:35,031 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:06:36,101 [INFO] M step=85 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:06:36,348 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:06:36,630 [INFO] [M] action=trunk_forward stage=FORWARD step=85 ok=True dt=0.5s
+2026-08-26 09:06:37,303 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:06:39,581 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=85 ok=True dt=0.0s
+2026-08-26 09:06:39,582 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:06:39,973 [INFO] [M] action=lora_update stage=UPDATE step=85 ok=True dt=0.4s
+2026-08-26 09:06:39,973 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:06:40,915 [INFO] M step=86 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:06:41,156 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:06:41,437 [INFO] [M] action=trunk_forward stage=FORWARD step=86 ok=True dt=0.5s
+2026-08-26 09:06:42,074 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:06:44,378 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=86 ok=True dt=0.0s
+2026-08-26 09:06:44,379 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:06:44,816 [INFO] [M] action=lora_update stage=UPDATE step=86 ok=True dt=0.4s
+2026-08-26 09:06:44,817 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:06:45,840 [INFO] M step=87 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:06:46,075 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:06:46,343 [INFO] [M] action=trunk_forward stage=FORWARD step=87 ok=True dt=0.5s
+2026-08-26 09:06:46,977 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:06:49,221 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=87 ok=True dt=0.0s
+2026-08-26 09:06:49,221 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:06:49,667 [INFO] [M] action=lora_update stage=UPDATE step=87 ok=True dt=0.4s
+2026-08-26 09:06:49,668 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:06:50,604 [INFO] M step=88 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:06:50,824 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:06:51,097 [INFO] [M] action=trunk_forward stage=FORWARD step=88 ok=True dt=0.5s
+2026-08-26 09:06:51,758 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:06:54,128 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=88 ok=True dt=0.0s
+2026-08-26 09:06:54,128 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:06:54,535 [INFO] [M] action=lora_update stage=UPDATE step=88 ok=True dt=0.4s
+2026-08-26 09:06:54,535 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:06:55,553 [INFO] M step=89 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:06:55,785 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:06:56,076 [INFO] [M] action=trunk_forward stage=FORWARD step=89 ok=True dt=0.5s
+2026-08-26 09:06:56,721 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:06:59,102 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=89 ok=True dt=0.0s
+2026-08-26 09:06:59,102 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:06:59,529 [INFO] [M] action=lora_update stage=UPDATE step=89 ok=True dt=0.4s
+2026-08-26 09:06:59,529 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:07:00,571 [INFO] M step=90 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:07:00,783 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:07:01,048 [INFO] [M] action=trunk_forward stage=FORWARD step=90 ok=True dt=0.5s
+2026-08-26 09:07:01,666 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:07:03,848 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=90 ok=True dt=0.0s
+2026-08-26 09:07:03,848 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:07:04,285 [INFO] [M] action=lora_update stage=UPDATE step=90 ok=True dt=0.4s
+2026-08-26 09:07:04,285 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:07:05,334 [INFO] M step=91 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:07:05,550 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:07:05,812 [INFO] [M] action=trunk_forward stage=FORWARD step=91 ok=True dt=0.5s
+2026-08-26 09:07:06,435 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:07:08,740 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=91 ok=True dt=0.0s
+2026-08-26 09:07:08,741 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:07:09,184 [INFO] [M] action=lora_update stage=UPDATE step=91 ok=True dt=0.4s
+2026-08-26 09:07:09,184 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:07:10,209 [INFO] M step=92 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:07:10,430 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:07:10,689 [INFO] [M] action=trunk_forward stage=FORWARD step=92 ok=True dt=0.5s
+2026-08-26 09:07:11,323 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:07:13,622 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=92 ok=True dt=0.0s
+2026-08-26 09:07:13,622 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:07:14,047 [INFO] [M] action=lora_update stage=UPDATE step=92 ok=True dt=0.4s
+2026-08-26 09:07:14,048 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:07:15,004 [INFO] M step=93 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:07:15,238 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:07:15,511 [INFO] [M] action=trunk_forward stage=FORWARD step=93 ok=True dt=0.5s
+2026-08-26 09:07:16,168 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:07:18,603 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=93 ok=True dt=0.0s
+2026-08-26 09:07:18,603 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:07:19,035 [INFO] [M] action=lora_update stage=UPDATE step=93 ok=True dt=0.4s
+2026-08-26 09:07:19,035 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:07:20,070 [INFO] M step=94 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:07:20,298 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:07:20,561 [INFO] [M] action=trunk_forward stage=FORWARD step=94 ok=True dt=0.5s
+2026-08-26 09:07:21,176 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:07:23,348 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=94 ok=True dt=0.0s
+2026-08-26 09:07:23,348 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:07:23,766 [INFO] [M] action=lora_update stage=UPDATE step=94 ok=True dt=0.4s
+2026-08-26 09:07:23,766 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:07:24,743 [INFO] M step=95 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:07:24,951 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:07:25,205 [INFO] [M] action=trunk_forward stage=FORWARD step=95 ok=True dt=0.5s
+2026-08-26 09:07:25,812 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:07:27,957 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=95 ok=True dt=0.0s
+2026-08-26 09:07:27,958 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:07:28,387 [INFO] [M] action=lora_update stage=UPDATE step=95 ok=True dt=0.4s
+2026-08-26 09:07:28,387 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:07:29,369 [INFO] M step=96 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:07:29,578 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:07:29,842 [INFO] [M] action=trunk_forward stage=FORWARD step=96 ok=True dt=0.5s
+2026-08-26 09:07:30,490 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:07:32,558 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=96 ok=True dt=0.0s
+2026-08-26 09:07:32,558 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:07:32,977 [INFO] [M] action=lora_update stage=UPDATE step=96 ok=True dt=0.4s
+2026-08-26 09:07:32,977 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:07:33,920 [INFO] M step=97 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:07:34,127 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:07:34,395 [INFO] [M] action=trunk_forward stage=FORWARD step=97 ok=True dt=0.5s
+2026-08-26 09:07:35,031 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:07:37,188 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=97 ok=True dt=0.0s
+2026-08-26 09:07:37,189 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:07:37,572 [INFO] [M] action=lora_update stage=UPDATE step=97 ok=True dt=0.4s
+2026-08-26 09:07:37,572 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:07:38,558 [INFO] M step=98 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:07:38,803 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:07:39,082 [INFO] [M] action=trunk_forward stage=FORWARD step=98 ok=True dt=0.5s
+2026-08-26 09:07:39,725 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:07:42,005 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=98 ok=True dt=0.0s
+2026-08-26 09:07:42,005 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:07:42,454 [INFO] [M] action=lora_update stage=UPDATE step=98 ok=True dt=0.4s
+2026-08-26 09:07:42,454 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:07:43,430 [INFO] M step=99 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:07:43,639 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:07:43,890 [INFO] [M] action=trunk_forward stage=FORWARD step=99 ok=True dt=0.5s
+2026-08-26 09:07:44,504 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:07:46,709 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=99 ok=True dt=0.0s
+2026-08-26 09:07:46,709 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:07:47,140 [INFO] [M] action=lora_update stage=UPDATE step=99 ok=True dt=0.4s
+2026-08-26 09:07:47,140 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:07:48,145 [INFO] M step=100 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:07:48,361 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:07:48,625 [INFO] [M] action=trunk_forward stage=FORWARD step=100 ok=True dt=0.5s
+2026-08-26 09:07:49,240 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:07:51,421 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=100 ok=True dt=0.0s
+2026-08-26 09:07:51,421 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:07:51,803 [INFO] [M] action=lora_update stage=UPDATE step=100 ok=True dt=0.4s
+2026-08-26 09:07:51,803 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:07:52,696 [INFO] M step=101 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:07:52,913 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:07:53,172 [INFO] [M] action=trunk_forward stage=FORWARD step=101 ok=True dt=0.5s
+2026-08-26 09:07:53,791 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:07:55,959 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=101 ok=True dt=0.0s
+2026-08-26 09:07:55,959 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:07:56,371 [INFO] [M] action=lora_update stage=UPDATE step=101 ok=True dt=0.4s
+2026-08-26 09:07:56,372 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:07:57,332 [INFO] M step=102 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:07:57,542 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:07:57,804 [INFO] [M] action=trunk_forward stage=FORWARD step=102 ok=True dt=0.5s
+2026-08-26 09:07:58,438 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:08:00,786 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=102 ok=True dt=0.0s
+2026-08-26 09:08:00,786 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:08:01,238 [INFO] [M] action=lora_update stage=UPDATE step=102 ok=True dt=0.5s
+2026-08-26 09:08:01,238 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:08:02,288 [INFO] M step=103 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:08:02,508 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:08:02,774 [INFO] [M] action=trunk_forward stage=FORWARD step=103 ok=True dt=0.5s
+2026-08-26 09:08:03,404 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:08:05,561 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=103 ok=True dt=0.0s
+2026-08-26 09:08:05,562 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:08:05,994 [INFO] [M] action=lora_update stage=UPDATE step=103 ok=True dt=0.4s
+2026-08-26 09:08:05,994 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:08:07,016 [INFO] M step=104 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:08:07,223 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:08:07,472 [INFO] [M] action=trunk_forward stage=FORWARD step=104 ok=True dt=0.5s
+2026-08-26 09:08:08,090 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:08:10,272 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=104 ok=True dt=0.0s
+2026-08-26 09:08:10,272 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:08:10,685 [INFO] [M] action=lora_update stage=UPDATE step=104 ok=True dt=0.4s
+2026-08-26 09:08:10,685 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:08:11,614 [INFO] M step=105 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:08:11,834 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:08:12,087 [INFO] [M] action=trunk_forward stage=FORWARD step=105 ok=True dt=0.5s
+2026-08-26 09:08:12,704 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:08:14,854 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=105 ok=True dt=0.0s
+2026-08-26 09:08:14,854 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:08:15,288 [INFO] [M] action=lora_update stage=UPDATE step=105 ok=True dt=0.4s
+2026-08-26 09:08:15,288 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:08:16,310 [INFO] M step=106 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:08:16,528 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:08:16,808 [INFO] [M] action=trunk_forward stage=FORWARD step=106 ok=True dt=0.5s
+2026-08-26 09:08:17,434 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:08:19,597 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=106 ok=True dt=0.0s
+2026-08-26 09:08:19,597 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:08:20,019 [INFO] [M] action=lora_update stage=UPDATE step=106 ok=True dt=0.4s
+2026-08-26 09:08:20,019 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:08:21,007 [INFO] M step=107 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:08:21,219 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:08:21,478 [INFO] [M] action=trunk_forward stage=FORWARD step=107 ok=True dt=0.5s
+2026-08-26 09:08:22,100 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:08:24,308 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=107 ok=True dt=0.0s
+2026-08-26 09:08:24,309 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:08:24,745 [INFO] [M] action=lora_update stage=UPDATE step=107 ok=True dt=0.4s
+2026-08-26 09:08:24,745 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:08:25,709 [INFO] M step=108 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:08:25,919 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:08:26,169 [INFO] [M] action=trunk_forward stage=FORWARD step=108 ok=True dt=0.5s
+2026-08-26 09:08:26,772 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:08:28,929 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=108 ok=True dt=0.0s
+2026-08-26 09:08:28,929 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:08:29,355 [INFO] [M] action=lora_update stage=UPDATE step=108 ok=True dt=0.4s
+2026-08-26 09:08:29,355 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:08:30,314 [INFO] M step=109 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:08:30,536 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:08:30,830 [INFO] [M] action=trunk_forward stage=FORWARD step=109 ok=True dt=0.5s
+2026-08-26 09:08:31,510 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:08:33,680 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=109 ok=True dt=0.0s
+2026-08-26 09:08:33,680 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:08:34,065 [INFO] [M] action=lora_update stage=UPDATE step=109 ok=True dt=0.4s
+2026-08-26 09:08:34,065 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:08:34,988 [INFO] M step=110 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:08:35,200 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:08:35,455 [INFO] [M] action=trunk_forward stage=FORWARD step=110 ok=True dt=0.5s
+2026-08-26 09:08:36,095 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:08:38,347 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=110 ok=True dt=0.0s
+2026-08-26 09:08:38,347 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:08:38,770 [INFO] [M] action=lora_update stage=UPDATE step=110 ok=True dt=0.4s
+2026-08-26 09:08:38,771 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:08:39,688 [INFO] M step=111 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:08:39,896 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:08:40,152 [INFO] [M] action=trunk_forward stage=FORWARD step=111 ok=True dt=0.5s
+2026-08-26 09:08:40,767 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:08:43,057 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=111 ok=True dt=0.0s
+2026-08-26 09:08:43,057 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:08:43,490 [INFO] [M] action=lora_update stage=UPDATE step=111 ok=True dt=0.4s
+2026-08-26 09:08:43,491 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:08:44,565 [INFO] M step=112 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:08:44,787 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:08:45,055 [INFO] [M] action=trunk_forward stage=FORWARD step=112 ok=True dt=0.5s
+2026-08-26 09:08:45,670 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:08:47,871 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=112 ok=True dt=0.0s
+2026-08-26 09:08:47,872 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:08:48,317 [INFO] [M] action=lora_update stage=UPDATE step=112 ok=True dt=0.4s
+2026-08-26 09:08:48,317 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:08:49,307 [INFO] M step=113 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:08:49,516 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:08:49,768 [INFO] [M] action=trunk_forward stage=FORWARD step=113 ok=True dt=0.5s
+2026-08-26 09:08:50,426 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:08:52,611 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=113 ok=True dt=0.0s
+2026-08-26 09:08:52,611 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:08:53,016 [INFO] [M] action=lora_update stage=UPDATE step=113 ok=True dt=0.4s
+2026-08-26 09:08:53,016 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:08:53,967 [INFO] M step=114 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:08:54,175 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:08:54,425 [INFO] [M] action=trunk_forward stage=FORWARD step=114 ok=True dt=0.5s
+2026-08-26 09:08:55,048 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:08:57,332 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=114 ok=True dt=0.0s
+2026-08-26 09:08:57,332 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:08:57,758 [INFO] [M] action=lora_update stage=UPDATE step=114 ok=True dt=0.4s
+2026-08-26 09:08:57,758 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:08:58,761 [INFO] M step=115 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:08:58,986 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:08:59,259 [INFO] [M] action=trunk_forward stage=FORWARD step=115 ok=True dt=0.5s
+2026-08-26 09:08:59,897 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:09:02,204 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=115 ok=True dt=0.0s
+2026-08-26 09:09:02,204 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:09:02,640 [INFO] [M] action=lora_update stage=UPDATE step=115 ok=True dt=0.4s
+2026-08-26 09:09:02,640 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:09:03,603 [INFO] M step=116 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:09:03,815 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:09:04,069 [INFO] [M] action=trunk_forward stage=FORWARD step=116 ok=True dt=0.5s
+2026-08-26 09:09:04,679 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:09:06,860 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=116 ok=True dt=0.0s
+2026-08-26 09:09:06,861 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:09:07,300 [INFO] [M] action=lora_update stage=UPDATE step=116 ok=True dt=0.4s
+2026-08-26 09:09:07,300 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:09:08,333 [INFO] M step=117 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:09:08,550 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:09:08,807 [INFO] [M] action=trunk_forward stage=FORWARD step=117 ok=True dt=0.5s
+2026-08-26 09:09:09,429 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:09:11,700 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=117 ok=True dt=0.0s
+2026-08-26 09:09:11,700 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:09:12,102 [INFO] [M] action=lora_update stage=UPDATE step=117 ok=True dt=0.4s
+2026-08-26 09:09:12,102 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:09:13,021 [INFO] M step=118 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:09:13,237 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:09:13,519 [INFO] [M] action=trunk_forward stage=FORWARD step=118 ok=True dt=0.5s
+2026-08-26 09:09:14,143 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:09:16,336 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=118 ok=True dt=0.0s
+2026-08-26 09:09:16,336 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:09:16,781 [INFO] [M] action=lora_update stage=UPDATE step=118 ok=True dt=0.4s
+2026-08-26 09:09:16,781 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:09:17,833 [INFO] M step=119 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:09:18,066 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:09:18,364 [INFO] [M] action=trunk_forward stage=FORWARD step=119 ok=True dt=0.5s
+2026-08-26 09:09:19,019 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:09:21,306 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=119 ok=True dt=0.0s
+2026-08-26 09:09:21,306 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:09:21,778 [INFO] [M] action=lora_update stage=UPDATE step=119 ok=True dt=0.5s
+2026-08-26 09:09:21,778 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:09:22,774 [INFO] M step=120 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:09:22,992 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:09:23,253 [INFO] [M] action=trunk_forward stage=FORWARD step=120 ok=True dt=0.5s
+2026-08-26 09:09:23,868 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:09:26,095 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=120 ok=True dt=0.0s
+2026-08-26 09:09:26,095 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:09:26,542 [INFO] [M] action=lora_update stage=UPDATE step=120 ok=True dt=0.4s
+2026-08-26 09:09:26,542 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:09:27,496 [INFO] M step=121 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:09:27,717 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:09:27,973 [INFO] [M] action=trunk_forward stage=FORWARD step=121 ok=True dt=0.5s
+2026-08-26 09:09:28,591 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:09:30,708 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=121 ok=True dt=0.0s
+2026-08-26 09:09:30,708 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:09:31,092 [INFO] [M] action=lora_update stage=UPDATE step=121 ok=True dt=0.4s
+2026-08-26 09:09:31,092 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:09:32,107 [INFO] M step=122 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:09:32,339 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:09:32,604 [INFO] [M] action=trunk_forward stage=FORWARD step=122 ok=True dt=0.5s
+2026-08-26 09:09:33,262 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:09:35,617 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=122 ok=True dt=0.0s
+2026-08-26 09:09:35,618 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:09:36,072 [INFO] [M] action=lora_update stage=UPDATE step=122 ok=True dt=0.5s
+2026-08-26 09:09:36,072 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:09:37,091 [INFO] M step=123 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:09:37,315 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:09:37,583 [INFO] [M] action=trunk_forward stage=FORWARD step=123 ok=True dt=0.5s
+2026-08-26 09:09:38,224 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:09:40,491 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=123 ok=True dt=0.0s
+2026-08-26 09:09:40,491 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:09:40,932 [INFO] [M] action=lora_update stage=UPDATE step=123 ok=True dt=0.4s
+2026-08-26 09:09:40,932 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:09:41,998 [INFO] M step=124 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:09:42,217 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:09:42,480 [INFO] [M] action=trunk_forward stage=FORWARD step=124 ok=True dt=0.5s
+2026-08-26 09:09:43,097 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:09:45,297 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=124 ok=True dt=0.0s
+2026-08-26 09:09:45,297 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:09:45,728 [INFO] [M] action=lora_update stage=UPDATE step=124 ok=True dt=0.4s
+2026-08-26 09:09:45,728 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:09:46,765 [INFO] M step=125 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:09:46,987 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:09:47,251 [INFO] [M] action=trunk_forward stage=FORWARD step=125 ok=True dt=0.5s
+2026-08-26 09:09:47,882 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:09:50,056 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=125 ok=True dt=0.0s
+2026-08-26 09:09:50,056 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:09:50,434 [INFO] [M] action=lora_update stage=UPDATE step=125 ok=True dt=0.4s
+2026-08-26 09:09:50,434 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:09:51,355 [INFO] M step=126 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:09:51,584 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:09:51,849 [INFO] [M] action=trunk_forward stage=FORWARD step=126 ok=True dt=0.5s
+2026-08-26 09:09:52,524 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:09:54,677 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=126 ok=True dt=0.0s
+2026-08-26 09:09:54,677 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:09:55,087 [INFO] [M] action=lora_update stage=UPDATE step=126 ok=True dt=0.4s
+2026-08-26 09:09:55,088 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:09:56,017 [INFO] M step=127 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:09:56,251 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:09:56,537 [INFO] [M] action=trunk_forward stage=FORWARD step=127 ok=True dt=0.5s
+2026-08-26 09:09:57,169 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:09:59,385 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=127 ok=True dt=0.0s
+2026-08-26 09:09:59,385 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:09:59,800 [INFO] [M] action=lora_update stage=UPDATE step=127 ok=True dt=0.4s
+2026-08-26 09:09:59,800 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:10:00,772 [INFO] M step=128 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:10:00,984 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:10:01,244 [INFO] [M] action=trunk_forward stage=FORWARD step=128 ok=True dt=0.5s
+2026-08-26 09:10:01,860 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:10:04,111 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=128 ok=True dt=0.0s
+2026-08-26 09:10:04,111 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:10:04,529 [INFO] [M] action=lora_update stage=UPDATE step=128 ok=True dt=0.4s
+2026-08-26 09:10:04,530 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:10:05,558 [INFO] M step=129 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:10:05,792 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:10:06,053 [INFO] [M] action=trunk_forward stage=FORWARD step=129 ok=True dt=0.5s
+2026-08-26 09:10:06,707 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:10:08,893 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=129 ok=True dt=0.0s
+2026-08-26 09:10:08,893 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:10:09,315 [INFO] [M] action=lora_update stage=UPDATE step=129 ok=True dt=0.4s
+2026-08-26 09:10:09,315 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:10:10,248 [INFO] M step=130 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:10:10,485 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:10:10,762 [INFO] [M] action=trunk_forward stage=FORWARD step=130 ok=True dt=0.5s
+2026-08-26 09:10:11,394 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:10:13,710 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=130 ok=True dt=0.0s
+2026-08-26 09:10:13,710 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:10:14,097 [INFO] [M] action=lora_update stage=UPDATE step=130 ok=True dt=0.4s
+2026-08-26 09:10:14,098 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:10:15,017 [INFO] M step=131 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:10:15,230 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:10:15,482 [INFO] [M] action=trunk_forward stage=FORWARD step=131 ok=True dt=0.5s
+2026-08-26 09:10:16,098 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:10:18,416 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=131 ok=True dt=0.0s
+2026-08-26 09:10:18,416 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:10:18,829 [INFO] [M] action=lora_update stage=UPDATE step=131 ok=True dt=0.4s
+2026-08-26 09:10:18,829 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:10:20,033 [INFO] M step=132 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:10:20,254 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:10:20,518 [INFO] [M] action=trunk_forward stage=FORWARD step=132 ok=True dt=0.5s
+2026-08-26 09:10:21,147 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:10:23,378 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=132 ok=True dt=0.0s
+2026-08-26 09:10:23,379 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:10:23,803 [INFO] [M] action=lora_update stage=UPDATE step=132 ok=True dt=0.4s
+2026-08-26 09:10:23,803 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:10:24,798 [INFO] M step=133 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:10:25,020 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:10:25,287 [INFO] [M] action=trunk_forward stage=FORWARD step=133 ok=True dt=0.5s
+2026-08-26 09:10:25,940 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:10:28,242 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=133 ok=True dt=0.0s
+2026-08-26 09:10:28,242 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:10:28,677 [INFO] [M] action=lora_update stage=UPDATE step=133 ok=True dt=0.4s
+2026-08-26 09:10:28,677 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:10:29,745 [INFO] M step=134 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:10:29,962 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:10:30,235 [INFO] [M] action=trunk_forward stage=FORWARD step=134 ok=True dt=0.5s
+2026-08-26 09:10:30,912 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:10:33,064 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=134 ok=True dt=0.0s
+2026-08-26 09:10:33,064 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:10:33,474 [INFO] [M] action=lora_update stage=UPDATE step=134 ok=True dt=0.4s
+2026-08-26 09:10:33,475 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:10:34,408 [INFO] M step=135 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:10:34,616 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:10:34,867 [INFO] [M] action=trunk_forward stage=FORWARD step=135 ok=True dt=0.5s
+2026-08-26 09:10:35,491 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:10:37,760 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=135 ok=True dt=0.0s
+2026-08-26 09:10:37,760 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:10:38,188 [INFO] [M] action=lora_update stage=UPDATE step=135 ok=True dt=0.4s
+2026-08-26 09:10:38,188 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:10:39,171 [INFO] M step=136 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:10:39,389 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:10:39,656 [INFO] [M] action=trunk_forward stage=FORWARD step=136 ok=True dt=0.5s
+2026-08-26 09:10:40,286 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:10:42,574 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=136 ok=True dt=0.0s
+2026-08-26 09:10:42,575 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:10:43,006 [INFO] [M] action=lora_update stage=UPDATE step=136 ok=True dt=0.4s
+2026-08-26 09:10:43,007 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:10:43,966 [INFO] M step=137 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:10:44,183 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:10:44,443 [INFO] [M] action=trunk_forward stage=FORWARD step=137 ok=True dt=0.5s
+2026-08-26 09:10:45,084 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:10:47,329 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=137 ok=True dt=0.0s
+2026-08-26 09:10:47,329 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:10:47,759 [INFO] [M] action=lora_update stage=UPDATE step=137 ok=True dt=0.4s
+2026-08-26 09:10:47,760 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:10:48,785 [INFO] M step=138 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:10:49,017 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:10:49,279 [INFO] [M] action=trunk_forward stage=FORWARD step=138 ok=True dt=0.5s
+2026-08-26 09:10:49,920 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:10:52,176 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=138 ok=True dt=0.0s
+2026-08-26 09:10:52,176 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:10:52,597 [INFO] [M] action=lora_update stage=UPDATE step=138 ok=True dt=0.4s
+2026-08-26 09:10:52,597 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:10:53,549 [INFO] M step=139 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:10:53,768 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:10:54,075 [INFO] [M] action=trunk_forward stage=FORWARD step=139 ok=True dt=0.5s
+2026-08-26 09:10:54,714 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:10:56,853 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=139 ok=True dt=0.0s
+2026-08-26 09:10:56,854 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:10:57,272 [INFO] [M] action=lora_update stage=UPDATE step=139 ok=True dt=0.4s
+2026-08-26 09:10:57,272 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:10:58,225 [INFO] M step=140 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:10:58,447 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:10:58,714 [INFO] [M] action=trunk_forward stage=FORWARD step=140 ok=True dt=0.5s
+2026-08-26 09:10:59,335 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:11:01,514 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=140 ok=True dt=0.0s
+2026-08-26 09:11:01,515 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:11:01,948 [INFO] [M] action=lora_update stage=UPDATE step=140 ok=True dt=0.4s
+2026-08-26 09:11:01,948 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:11:02,961 [INFO] M step=141 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:11:03,172 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:11:03,437 [INFO] [M] action=trunk_forward stage=FORWARD step=141 ok=True dt=0.5s
+2026-08-26 09:11:04,056 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:11:06,290 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=141 ok=True dt=0.0s
+2026-08-26 09:11:06,290 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:11:06,725 [INFO] [M] action=lora_update stage=UPDATE step=141 ok=True dt=0.4s
+2026-08-26 09:11:06,725 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:11:07,691 [INFO] M step=142 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:11:07,912 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:11:08,175 [INFO] [M] action=trunk_forward stage=FORWARD step=142 ok=True dt=0.5s
+2026-08-26 09:11:08,801 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:11:10,913 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=142 ok=True dt=0.0s
+2026-08-26 09:11:10,913 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:11:11,281 [INFO] [M] action=lora_update stage=UPDATE step=142 ok=True dt=0.4s
+2026-08-26 09:11:11,281 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:11:12,243 [INFO] M step=143 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:11:12,455 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:11:12,716 [INFO] [M] action=trunk_forward stage=FORWARD step=143 ok=True dt=0.5s
+2026-08-26 09:11:13,370 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:11:15,649 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=143 ok=True dt=0.0s
+2026-08-26 09:11:15,649 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:11:16,087 [INFO] [M] action=lora_update stage=UPDATE step=143 ok=True dt=0.4s
+2026-08-26 09:11:16,087 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:11:17,063 [INFO] M step=144 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:11:17,283 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:11:17,562 [INFO] [M] action=trunk_forward stage=FORWARD step=144 ok=True dt=0.5s
+2026-08-26 09:11:18,189 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:11:20,388 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=144 ok=True dt=0.0s
+2026-08-26 09:11:20,388 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:11:20,818 [INFO] [M] action=lora_update stage=UPDATE step=144 ok=True dt=0.4s
+2026-08-26 09:11:20,818 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:11:21,768 [INFO] M step=145 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:11:21,983 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:11:22,249 [INFO] [M] action=trunk_forward stage=FORWARD step=145 ok=True dt=0.5s
+2026-08-26 09:11:22,858 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:11:25,091 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=145 ok=True dt=0.0s
+2026-08-26 09:11:25,091 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:11:25,515 [INFO] [M] action=lora_update stage=UPDATE step=145 ok=True dt=0.4s
+2026-08-26 09:11:25,515 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:11:26,468 [INFO] M step=146 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:11:26,680 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:11:26,937 [INFO] [M] action=trunk_forward stage=FORWARD step=146 ok=True dt=0.5s
+2026-08-26 09:11:27,559 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:11:29,889 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=146 ok=True dt=0.0s
+2026-08-26 09:11:29,889 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:11:30,330 [INFO] [M] action=lora_update stage=UPDATE step=146 ok=True dt=0.4s
+2026-08-26 09:11:30,330 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:11:31,263 [INFO] M step=147 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:11:31,483 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:11:31,747 [INFO] [M] action=trunk_forward stage=FORWARD step=147 ok=True dt=0.5s
+2026-08-26 09:11:32,387 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:11:34,599 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=147 ok=True dt=0.0s
+2026-08-26 09:11:34,599 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:11:35,016 [INFO] [M] action=lora_update stage=UPDATE step=147 ok=True dt=0.4s
+2026-08-26 09:11:35,017 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:11:36,007 [INFO] M step=148 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:11:36,237 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:11:36,543 [INFO] [M] action=trunk_forward stage=FORWARD step=148 ok=True dt=0.5s
+2026-08-26 09:11:37,196 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:11:39,499 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=148 ok=True dt=0.0s
+2026-08-26 09:11:39,499 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:11:39,905 [INFO] [M] action=lora_update stage=UPDATE step=148 ok=True dt=0.4s
+2026-08-26 09:11:39,905 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:11:40,921 [INFO] M step=149 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:11:41,166 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:11:41,456 [INFO] [M] action=trunk_forward stage=FORWARD step=149 ok=True dt=0.5s
+2026-08-26 09:11:42,105 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:11:44,499 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=149 ok=True dt=0.0s
+2026-08-26 09:11:44,500 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:11:44,948 [INFO] [M] action=lora_update stage=UPDATE step=149 ok=True dt=0.4s
+2026-08-26 09:11:44,949 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:11:45,954 [INFO] M step=150 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:11:46,193 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:11:46,475 [INFO] [M] action=trunk_forward stage=FORWARD step=150 ok=True dt=0.5s
+2026-08-26 09:11:47,159 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:11:49,409 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=150 ok=True dt=0.0s
+2026-08-26 09:11:49,409 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:11:49,843 [INFO] [M] action=lora_update stage=UPDATE step=150 ok=True dt=0.4s
+2026-08-26 09:11:49,843 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:11:50,833 [INFO] M step=151 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:11:51,064 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:11:51,339 [INFO] [M] action=trunk_forward stage=FORWARD step=151 ok=True dt=0.5s
+2026-08-26 09:11:51,974 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:11:54,236 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=151 ok=True dt=0.0s
+2026-08-26 09:11:54,236 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:11:54,671 [INFO] [M] action=lora_update stage=UPDATE step=151 ok=True dt=0.4s
+2026-08-26 09:11:54,671 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:11:55,651 [INFO] M step=152 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:11:55,871 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:11:56,145 [INFO] [M] action=trunk_forward stage=FORWARD step=152 ok=True dt=0.5s
+2026-08-26 09:11:56,801 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:11:59,203 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=152 ok=True dt=0.0s
+2026-08-26 09:11:59,203 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:11:59,615 [INFO] [M] action=lora_update stage=UPDATE step=152 ok=True dt=0.4s
+2026-08-26 09:11:59,615 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:12:00,624 [INFO] M step=153 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:12:00,846 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:12:01,115 [INFO] [M] action=trunk_forward stage=FORWARD step=153 ok=True dt=0.5s
+2026-08-26 09:12:01,735 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:12:03,971 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=153 ok=True dt=0.0s
+2026-08-26 09:12:03,972 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:12:04,391 [INFO] [M] action=lora_update stage=UPDATE step=153 ok=True dt=0.4s
+2026-08-26 09:12:04,391 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:12:05,396 [INFO] M step=154 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:12:05,617 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:12:05,879 [INFO] [M] action=trunk_forward stage=FORWARD step=154 ok=True dt=0.5s
+2026-08-26 09:12:06,504 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:12:08,851 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=154 ok=True dt=0.0s
+2026-08-26 09:12:08,851 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:12:09,287 [INFO] [M] action=lora_update stage=UPDATE step=154 ok=True dt=0.4s
+2026-08-26 09:12:09,287 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:12:10,244 [INFO] M step=155 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:12:10,486 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:12:10,770 [INFO] [M] action=trunk_forward stage=FORWARD step=155 ok=True dt=0.5s
+2026-08-26 09:12:11,418 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:12:13,671 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=155 ok=True dt=0.0s
+2026-08-26 09:12:13,672 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:12:14,082 [INFO] [M] action=lora_update stage=UPDATE step=155 ok=True dt=0.4s
+2026-08-26 09:12:14,083 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:12:15,102 [INFO] M step=156 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:12:15,328 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:12:15,592 [INFO] [M] action=trunk_forward stage=FORWARD step=156 ok=True dt=0.5s
+2026-08-26 09:12:16,275 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:12:18,691 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=156 ok=True dt=0.0s
+2026-08-26 09:12:18,691 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:12:19,114 [INFO] [M] action=lora_update stage=UPDATE step=156 ok=True dt=0.4s
+2026-08-26 09:12:19,114 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:12:20,140 [INFO] M step=157 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:12:20,372 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:12:20,664 [INFO] [M] action=trunk_forward stage=FORWARD step=157 ok=True dt=0.5s
+2026-08-26 09:12:21,312 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:12:23,643 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=157 ok=True dt=0.0s
+2026-08-26 09:12:23,643 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:12:24,071 [INFO] [M] action=lora_update stage=UPDATE step=157 ok=True dt=0.4s
+2026-08-26 09:12:24,072 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:12:25,082 [INFO] M step=158 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:12:25,295 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:12:25,553 [INFO] [M] action=trunk_forward stage=FORWARD step=158 ok=True dt=0.5s
+2026-08-26 09:12:26,171 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:12:28,473 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=158 ok=True dt=0.0s
+2026-08-26 09:12:28,473 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:12:28,961 [INFO] [M] action=lora_update stage=UPDATE step=158 ok=True dt=0.5s
+2026-08-26 09:12:28,962 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:12:30,109 [INFO] M step=159 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:12:30,328 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:12:30,595 [INFO] [M] action=trunk_forward stage=FORWARD step=159 ok=True dt=0.5s
+2026-08-26 09:12:31,239 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:12:33,425 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=159 ok=True dt=0.0s
+2026-08-26 09:12:33,425 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:12:33,838 [INFO] [M] action=lora_update stage=UPDATE step=159 ok=True dt=0.4s
+2026-08-26 09:12:33,838 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:12:34,743 [INFO] M step=160 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:12:34,976 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:12:35,254 [INFO] [M] action=trunk_forward stage=FORWARD step=160 ok=True dt=0.5s
+2026-08-26 09:12:35,855 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:12:38,146 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=160 ok=True dt=0.0s
+2026-08-26 09:12:38,146 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:12:38,575 [INFO] [M] action=lora_update stage=UPDATE step=160 ok=True dt=0.4s
+2026-08-26 09:12:38,575 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:12:39,553 [INFO] M step=161 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:12:39,773 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:12:40,047 [INFO] [M] action=trunk_forward stage=FORWARD step=161 ok=True dt=0.5s
+2026-08-26 09:12:40,684 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:12:42,988 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=161 ok=True dt=0.0s
+2026-08-26 09:12:42,988 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:12:43,424 [INFO] [M] action=lora_update stage=UPDATE step=161 ok=True dt=0.4s
+2026-08-26 09:12:43,424 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:12:44,361 [INFO] M step=162 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:12:44,569 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:12:44,826 [INFO] [M] action=trunk_forward stage=FORWARD step=162 ok=True dt=0.5s
+2026-08-26 09:12:45,440 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:12:47,682 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=162 ok=True dt=0.0s
+2026-08-26 09:12:47,682 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:12:48,121 [INFO] [M] action=lora_update stage=UPDATE step=162 ok=True dt=0.4s
+2026-08-26 09:12:48,121 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:12:49,066 [INFO] M step=163 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:12:49,275 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:12:49,535 [INFO] [M] action=trunk_forward stage=FORWARD step=163 ok=True dt=0.5s
+2026-08-26 09:12:50,151 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:12:52,382 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=163 ok=True dt=0.0s
+2026-08-26 09:12:52,383 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:12:52,768 [INFO] [M] action=lora_update stage=UPDATE step=163 ok=True dt=0.4s
+2026-08-26 09:12:52,768 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:12:53,707 [INFO] M step=164 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:12:53,923 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:12:54,193 [INFO] [M] action=trunk_forward stage=FORWARD step=164 ok=True dt=0.5s
+2026-08-26 09:12:54,801 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:12:57,006 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=164 ok=True dt=0.0s
+2026-08-26 09:12:57,006 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:12:57,454 [INFO] [M] action=lora_update stage=UPDATE step=164 ok=True dt=0.4s
+2026-08-26 09:12:57,454 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:12:58,414 [INFO] M step=165 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:12:58,635 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:12:58,900 [INFO] [M] action=trunk_forward stage=FORWARD step=165 ok=True dt=0.5s
+2026-08-26 09:12:59,523 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:13:01,738 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=165 ok=True dt=0.0s
+2026-08-26 09:13:01,738 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:13:02,192 [INFO] [M] action=lora_update stage=UPDATE step=165 ok=True dt=0.5s
+2026-08-26 09:13:02,192 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:13:03,115 [INFO] M step=166 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:13:03,330 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:13:03,585 [INFO] [M] action=trunk_forward stage=FORWARD step=166 ok=True dt=0.5s
+2026-08-26 09:13:04,196 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:13:06,385 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=166 ok=True dt=0.0s
+2026-08-26 09:13:06,385 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:13:06,784 [INFO] [M] action=lora_update stage=UPDATE step=166 ok=True dt=0.4s
+2026-08-26 09:13:06,784 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:13:07,768 [INFO] M step=167 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:13:07,979 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:13:08,262 [INFO] [M] action=trunk_forward stage=FORWARD step=167 ok=True dt=0.5s
+2026-08-26 09:13:08,901 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:13:11,103 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=167 ok=True dt=0.0s
+2026-08-26 09:13:11,103 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:13:11,477 [INFO] [M] action=lora_update stage=UPDATE step=167 ok=True dt=0.4s
+2026-08-26 09:13:11,477 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:13:12,429 [INFO] M step=168 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:13:12,649 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:13:12,919 [INFO] [M] action=trunk_forward stage=FORWARD step=168 ok=True dt=0.5s
+2026-08-26 09:13:13,557 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:13:15,709 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=168 ok=True dt=0.0s
+2026-08-26 09:13:15,709 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:13:16,135 [INFO] [M] action=lora_update stage=UPDATE step=168 ok=True dt=0.4s
+2026-08-26 09:13:16,136 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:13:17,143 [INFO] M step=169 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:13:17,362 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:13:17,620 [INFO] [M] action=trunk_forward stage=FORWARD step=169 ok=True dt=0.5s
+2026-08-26 09:13:18,251 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:13:20,453 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=169 ok=True dt=0.0s
+2026-08-26 09:13:20,453 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:13:20,873 [INFO] [M] action=lora_update stage=UPDATE step=169 ok=True dt=0.4s
+2026-08-26 09:13:20,873 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:13:21,827 [INFO] M step=170 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:13:22,038 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:13:22,296 [INFO] [M] action=trunk_forward stage=FORWARD step=170 ok=True dt=0.5s
+2026-08-26 09:13:22,903 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:13:25,139 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=170 ok=True dt=0.0s
+2026-08-26 09:13:25,139 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:13:25,563 [INFO] [M] action=lora_update stage=UPDATE step=170 ok=True dt=0.4s
+2026-08-26 09:13:25,563 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:13:26,495 [INFO] M step=171 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:13:26,706 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:13:26,962 [INFO] [M] action=trunk_forward stage=FORWARD step=171 ok=True dt=0.5s
+2026-08-26 09:13:27,570 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:13:29,729 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=171 ok=True dt=0.0s
+2026-08-26 09:13:29,729 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:13:30,277 [INFO] [M] action=lora_update stage=UPDATE step=171 ok=True dt=0.5s
+2026-08-26 09:13:30,277 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:13:31,230 [INFO] M step=172 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:13:31,506 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:13:31,774 [INFO] [M] action=trunk_forward stage=FORWARD step=172 ok=True dt=0.5s
+2026-08-26 09:13:32,415 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:13:34,566 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=172 ok=True dt=0.0s
+2026-08-26 09:13:34,566 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:13:34,997 [INFO] [M] action=lora_update stage=UPDATE step=172 ok=True dt=0.4s
+2026-08-26 09:13:34,998 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:13:35,960 [INFO] M step=173 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:13:36,180 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:13:36,455 [INFO] [M] action=trunk_forward stage=FORWARD step=173 ok=True dt=0.5s
+2026-08-26 09:13:37,119 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:13:39,406 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=173 ok=True dt=0.0s
+2026-08-26 09:13:39,406 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:13:39,851 [INFO] [M] action=lora_update stage=UPDATE step=173 ok=True dt=0.4s
+2026-08-26 09:13:39,851 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:13:40,774 [INFO] M step=174 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:13:40,988 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:13:41,248 [INFO] [M] action=trunk_forward stage=FORWARD step=174 ok=True dt=0.5s
+2026-08-26 09:13:41,862 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:13:44,111 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=174 ok=True dt=0.0s
+2026-08-26 09:13:44,111 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:13:44,536 [INFO] [M] action=lora_update stage=UPDATE step=174 ok=True dt=0.4s
+2026-08-26 09:13:44,537 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:13:45,475 [INFO] M step=175 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:13:45,693 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:13:45,952 [INFO] [M] action=trunk_forward stage=FORWARD step=175 ok=True dt=0.5s
+2026-08-26 09:13:46,571 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:13:48,760 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=175 ok=True dt=0.0s
+2026-08-26 09:13:48,760 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:13:49,157 [INFO] [M] action=lora_update stage=UPDATE step=175 ok=True dt=0.4s
+2026-08-26 09:13:49,157 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:13:50,118 [INFO] M step=176 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:13:50,331 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:13:50,599 [INFO] [M] action=trunk_forward stage=FORWARD step=176 ok=True dt=0.5s
+2026-08-26 09:13:51,242 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:13:53,429 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=176 ok=True dt=0.0s
+2026-08-26 09:13:53,429 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:13:53,808 [INFO] [M] action=lora_update stage=UPDATE step=176 ok=True dt=0.4s
+2026-08-26 09:13:53,808 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:13:54,731 [INFO] M step=177 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:13:54,939 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:13:55,195 [INFO] [M] action=trunk_forward stage=FORWARD step=177 ok=True dt=0.5s
+2026-08-26 09:13:55,799 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:13:58,003 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=177 ok=True dt=0.0s
+2026-08-26 09:13:58,003 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:13:58,417 [INFO] [M] action=lora_update stage=UPDATE step=177 ok=True dt=0.4s
+2026-08-26 09:13:58,418 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:13:59,469 [INFO] M step=178 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:13:59,703 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:13:59,995 [INFO] [M] action=trunk_forward stage=FORWARD step=178 ok=True dt=0.5s
+2026-08-26 09:14:00,652 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:14:03,015 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=178 ok=True dt=0.0s
+2026-08-26 09:14:03,015 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:14:03,471 [INFO] [M] action=lora_update stage=UPDATE step=178 ok=True dt=0.5s
+2026-08-26 09:14:03,471 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:14:04,440 [INFO] M step=179 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:14:04,661 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:14:04,928 [INFO] [M] action=trunk_forward stage=FORWARD step=179 ok=True dt=0.5s
+2026-08-26 09:14:05,550 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:14:07,832 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=179 ok=True dt=0.0s
+2026-08-26 09:14:07,832 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:14:08,279 [INFO] [M] action=lora_update stage=UPDATE step=179 ok=True dt=0.4s
+2026-08-26 09:14:08,279 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:14:09,245 [INFO] M step=180 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:14:09,462 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:14:09,726 [INFO] [M] action=trunk_forward stage=FORWARD step=180 ok=True dt=0.5s
+2026-08-26 09:14:10,348 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:14:12,526 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=180 ok=True dt=0.0s
+2026-08-26 09:14:12,527 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:14:12,894 [INFO] [M] action=lora_update stage=UPDATE step=180 ok=True dt=0.4s
+2026-08-26 09:14:12,894 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:14:13,843 [INFO] M step=181 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:14:14,081 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:14:14,352 [INFO] [M] action=trunk_forward stage=FORWARD step=181 ok=True dt=0.5s
+2026-08-26 09:14:14,975 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:14:17,283 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=181 ok=True dt=0.0s
+2026-08-26 09:14:17,284 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:14:17,730 [INFO] [M] action=lora_update stage=UPDATE step=181 ok=True dt=0.4s
+2026-08-26 09:14:17,730 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:14:18,798 [INFO] M step=182 RSS=2.97GB gpu_alloc=958MB gpu_reserved=1046MB
+2026-08-26 09:14:19,032 [INFO] M gpu_mem after fwd: 1022MB
+2026-08-26 09:14:19,323 [INFO] [M] action=trunk_forward stage=FORWARD step=182 ok=True dt=0.5s
+2026-08-26 09:14:19,996 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:14:22,356 [INFO] [M] action=grad_reconstruct stage=RECONSTRUCT step=182 ok=True dt=0.0s
+2026-08-26 09:14:22,356 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:14:22,799 [INFO] [M] action=lora_update stage=UPDATE step=182 ok=True dt=0.4s
+2026-08-26 09:14:22,799 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:14:22,937 [INFO] [M] action=gather_checkpoint stage=EVAL step=0 ok=True dt=0.1s
+2026-08-26 09:14:23,114 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:14:24,610 [INFO] [M] action=val_forward stage=EVAL step=0 ok=True dt=0.5s
+2026-08-26 09:14:25,168 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:14:28,000 [INFO] [M] action=val_forward stage=EVAL step=0 ok=True dt=0.5s
+2026-08-26 09:14:28,571 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:14:31,299 [INFO] [M] action=val_forward stage=EVAL step=0 ok=True dt=0.5s
+2026-08-26 09:14:31,889 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:14:34,525 [INFO] [M] action=val_forward stage=EVAL step=0 ok=True dt=0.5s
+2026-08-26 09:14:35,096 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:14:37,853 [INFO] [M] action=val_forward stage=EVAL step=0 ok=True dt=0.5s
+2026-08-26 09:14:38,427 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:14:41,132 [INFO] [M] action=val_forward stage=EVAL step=0 ok=True dt=0.5s
+2026-08-26 09:14:41,724 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:14:44,470 [INFO] [M] action=val_forward stage=EVAL step=0 ok=True dt=0.5s
+2026-08-26 09:14:45,029 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:14:47,585 [INFO] [M] action=val_forward stage=EVAL step=0 ok=True dt=0.5s
+2026-08-26 09:14:48,134 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:14:50,791 [INFO] [M] action=val_forward stage=EVAL step=0 ok=True dt=0.5s
+2026-08-26 09:14:51,379 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:14:53,974 [INFO] [M] action=val_forward stage=EVAL step=0 ok=True dt=0.5s
+2026-08-26 09:14:54,535 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:14:57,121 [INFO] [M] action=val_forward stage=EVAL step=0 ok=True dt=0.5s
+2026-08-26 09:14:57,680 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:15:00,275 [INFO] [M] action=val_forward stage=EVAL step=0 ok=True dt=0.5s
+2026-08-26 09:15:00,829 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:15:03,426 [INFO] [M] action=val_forward stage=EVAL step=0 ok=True dt=0.5s
+2026-08-26 09:15:03,982 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:15:06,627 [INFO] [M] action=val_forward stage=EVAL step=0 ok=True dt=0.5s
+2026-08-26 09:15:07,229 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:15:09,873 [INFO] [M] action=val_forward stage=EVAL step=0 ok=True dt=0.5s
+2026-08-26 09:15:10,447 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:15:13,211 [INFO] [M] action=val_forward stage=EVAL step=0 ok=True dt=0.5s
+2026-08-26 09:15:13,760 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:15:16,294 [INFO] [M] action=val_forward stage=EVAL step=0 ok=True dt=0.5s
+2026-08-26 09:15:16,860 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:15:19,488 [INFO] [M] action=val_forward stage=EVAL step=0 ok=True dt=0.5s
+2026-08-26 09:15:20,061 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:15:22,659 [INFO] [M] action=val_forward stage=EVAL step=0 ok=True dt=0.5s
+2026-08-26 09:15:23,207 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:15:25,735 [INFO] [M] action=val_forward stage=EVAL step=0 ok=True dt=0.5s
+2026-08-26 09:15:26,285 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:15:28,867 [INFO] [M] action=val_forward stage=EVAL step=0 ok=True dt=0.5s
+2026-08-26 09:15:29,413 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:15:32,122 [INFO] [M] action=val_forward stage=EVAL step=0 ok=True dt=0.5s
+2026-08-26 09:15:32,719 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:15:35,461 [INFO] [M] action=val_forward stage=EVAL step=0 ok=True dt=0.5s
+2026-08-26 09:15:36,021 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:15:38,654 [INFO] [M] action=val_forward stage=EVAL step=0 ok=True dt=0.5s
+2026-08-26 09:15:39,219 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:15:41,794 [INFO] [M] action=val_forward stage=EVAL step=0 ok=True dt=0.5s
+2026-08-26 09:15:42,347 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:15:44,942 [INFO] [M] action=val_forward stage=EVAL step=0 ok=True dt=0.5s
+2026-08-26 09:15:45,514 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:15:48,187 [INFO] [M] action=val_forward stage=EVAL step=0 ok=True dt=0.5s
+2026-08-26 09:15:48,765 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:15:51,394 [INFO] [M] action=val_forward stage=EVAL step=0 ok=True dt=0.5s
+2026-08-26 09:15:51,984 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:15:54,699 [INFO] [M] action=val_forward stage=EVAL step=0 ok=True dt=0.5s
+2026-08-26 09:15:55,271 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:15:57,988 [INFO] [M] action=val_forward stage=EVAL step=0 ok=True dt=0.5s
+2026-08-26 09:15:58,548 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:16:01,125 [INFO] [M] action=val_forward stage=EVAL step=0 ok=True dt=0.5s
+2026-08-26 09:16:01,675 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:16:04,236 [INFO] [M] action=val_forward stage=EVAL step=0 ok=True dt=0.5s
+2026-08-26 09:16:04,827 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:16:07,525 [INFO] [M] action=val_forward stage=EVAL step=0 ok=True dt=0.5s
+2026-08-26 09:16:08,087 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:16:10,057 [INFO] [M] action=val_forward stage=EVAL step=0 ok=True dt=0.2s
+2026-08-26 09:16:10,294 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:16:10,846 [INFO] [M] action=gather_checkpoint stage=EVAL step=0 ok=True dt=0.1s
+2026-08-26 09:16:11,037 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:16:11,280 [INFO] [M] action=gather_checkpoint stage=EVAL step=0 ok=True dt=0.1s
+2026-08-26 09:16:11,461 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:16:11,683 [INFO] [M] action=gather_checkpoint stage=EVAL step=0 ok=True dt=0.1s
+2026-08-26 09:16:11,849 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:16:12,447 [INFO] [M] action=shutdown stage=EVAL step=0 ok=True dt=0.4s
+2026-08-26 09:16:12,447 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 09:16:13,984 [INFO] [M] action=gather_checkpoint stage=EVAL step=0 ok=True dt=0.1s
+2026-08-26 09:16:14,194 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+/root/miniconda3/lib/python3.12/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 6 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

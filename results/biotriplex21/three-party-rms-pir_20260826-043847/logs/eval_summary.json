@@ -1,0 +1,322 @@
+{
+  "before": {
+    "name": "zero-shot",
+    "task_type": "multiclass",
+    "n": 230,
+    "n_classes": 21,
+    "class_outputs": [
+      "a)",
+      "b)",
+      "c)",
+      "d)",
+      "e)",
+      "f)",
+      "g)",
+      "h)",
+      "i)",
+      "j)",
+      "k)",
+      "l)",
+      "m)",
+      "n)",
+      "o)",
+      "p)",
+      "q)",
+      "r)",
+      "s)",
+      "t)",
+      "u)"
+    ],
+    "accuracy": 0.0782608695652174,
+    "macro_f1": 0.008086253369272236,
+    "weighted_f1": 0.014766201804757998,
+    "per_class": {
+      "a)": {
+        "precision": 0.09375,
+        "recall": 0.9,
+        "f1-score": 0.16981132075471697,
+        "support": 20.0
+      },
+      "b)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1.0
+      },
+      "c)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1.0
+      },
+      "d)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 6.0
+      },
+      "e)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 2.0
+      },
+      "f)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 7.0
+      },
+      "g)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 3.0
+      },
+      "h)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 23.0
+      },
+      "i)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1.0
+      },
+      "j)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 58.0
+      },
+      "k)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 18.0
+      },
+      "l)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 4.0
+      },
+      "m)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 6.0
+      },
+      "n)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 15.0
+      },
+      "o)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 20.0
+      },
+      "p)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 4.0
+      },
+      "q)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 5.0
+      },
+      "r)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 5.0
+      },
+      "s)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 4.0
+      },
+      "t)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1.0
+      },
+      "u)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 26.0
+      }
+    }
+  },
+  "after": {
+    "name": "/root/CipherForge/final-test-data/three-party-rms-pir_20260826-043847/adapter",
+    "task_type": "multiclass",
+    "n": 230,
+    "n_classes": 21,
+    "class_outputs": [
+      "a)",
+      "b)",
+      "c)",
+      "d)",
+      "e)",
+      "f)",
+      "g)",
+      "h)",
+      "i)",
+      "j)",
+      "k)",
+      "l)",
+      "m)",
+      "n)",
+      "o)",
+      "p)",
+      "q)",
+      "r)",
+      "s)",
+      "t)",
+      "u)"
+    ],
+    "accuracy": 0.2956521739130435,
+    "macro_f1": 0.08772768900612721,
+    "weighted_f1": 0.20499122472665918,
+    "per_class": {
+      "a)": {
+        "precision": 0.3333333333333333,
+        "recall": 0.35,
+        "f1-score": 0.34146341463414637,
+        "support": 20.0
+      },
+      "b)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1.0
+      },
+      "c)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1.0
+      },
+      "d)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 6.0
+      },
+      "e)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 2.0
+      },
+      "f)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 7.0
+      },
+      "g)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 3.0
+      },
+      "h)": {
+        "precision": 0.3333333333333333,
+        "recall": 0.13043478260869565,
+        "f1-score": 0.1875,
+        "support": 23.0
+      },
+      "i)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1.0
+      },
+      "j)": {
+        "precision": 0.3150684931506849,
+        "recall": 0.7931034482758621,
+        "f1-score": 0.45098039215686275,
+        "support": 58.0
+      },
+      "k)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 18.0
+      },
+      "l)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 4.0
+      },
+      "m)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 6.0
+      },
+      "n)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 15.0
+      },
+      "o)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 20.0
+      },
+      "p)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 4.0
+      },
+      "q)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 5.0
+      },
+      "r)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 5.0
+      },
+      "s)": {
+        "precision": 0.4,
+        "recall": 1.0,
+        "f1-score": 0.5714285714285714,
+        "support": 4.0
+      },
+      "t)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1.0
+      },
+      "u)": {
+        "precision": 0.27586206896551724,
+        "recall": 0.3076923076923077,
+        "f1-score": 0.2909090909090909,
+        "support": 26.0
+      }
+    }
+  }
+}

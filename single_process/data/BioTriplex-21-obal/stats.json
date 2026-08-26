@@ -1,0 +1,101 @@
+{
+  "source": "/root/CipherForge/BioTriplex/data/Preprocessed BioTriplex/",
+  "task": "classification_fine_21",
+  "generated_at": "2026-08-26T00:37:21",
+  "label_names": [
+    "pathological role",
+    "causative activation",
+    "causative inhibition",
+    "causative mutation",
+    "modulator decrease disease",
+    "modulator increase disease",
+    "biomarker",
+    "associated mutation",
+    "dysregulation",
+    "increased expression",
+    "decreased expression",
+    "epigenetic marker",
+    "therapy resistance",
+    "prognostic indicator",
+    "negative prognostic marker",
+    "positive prognostic marker",
+    "therapeutic target",
+    "diagnostic tool",
+    "genetic susceptibility",
+    "no relation",
+    "relation undefined"
+  ],
+  "splits": {
+    "train": {
+      "rows": 801,
+      "label_counts": {
+        "causative mutation": 34,
+        "genetic susceptibility": 47,
+        "increased expression": 185,
+        "relation undefined": 49,
+        "biomarker": 8,
+        "pathological role": 60,
+        "diagnostic tool": 26,
+        "modulator increase disease": 22,
+        "negative prognostic marker": 88,
+        "therapeutic target": 41,
+        "prognostic indicator": 41,
+        "decreased expression": 49,
+        "associated mutation": 76,
+        "therapy resistance": 30,
+        "no relation": 18,
+        "modulator decrease disease": 3,
+        "positive prognostic marker": 11,
+        "causative activation": 2,
+        "causative inhibition": 7,
+        "dysregulation": 4
+      }
+    },
+    "val": {
+      "rows": 149,
+      "label_counts": {
+        "therapeutic target": 9,
+        "prognostic indicator": 7,
+        "pathological role": 22,
+        "causative mutation": 11,
+        "increased expression": 38,
+        "decreased expression": 15,
+        "relation undefined": 13,
+        "therapy resistance": 9,
+        "causative activation": 1,
+        "negative prognostic marker": 6,
+        "dysregulation": 3,
+        "diagnostic tool": 5,
+        "associated mutation": 7,
+        "modulator increase disease": 1,
+        "no relation": 2
+      }
+    },
+    "test": {
+      "rows": 230,
+      "label_counts": {
+        "decreased expression": 18,
+        "negative prognostic marker": 20,
+        "therapy resistance": 6,
+        "modulator decrease disease": 2,
+        "pathological role": 20,
+        "causative mutation": 6,
+        "associated mutation": 23,
+        "therapeutic target": 5,
+        "increased expression": 58,
+        "modulator increase disease": 7,
+        "biomarker": 3,
+        "prognostic indicator": 15,
+        "diagnostic tool": 5,
+        "relation undefined": 26,
+        "causative inhibition": 1,
+        "dysregulation": 1,
+        "positive prognostic marker": 4,
+        "epigenetic marker": 4,
+        "no relation": 1,
+        "genetic susceptibility": 4,
+        "causative activation": 1
+      }
+    }
+  }
+}

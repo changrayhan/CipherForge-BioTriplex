@@ -1,0 +1,237 @@
+2026-08-26 03:56:30,356 [INFO] [S] node srv-s-01 listening on http://127.0.0.1:9003 (protocol 1.0)
+2026-08-26 03:56:31,051 [INFO] 127.0.0.1 - "GET /v1/hello HTTP/1.1" 200 -
+2026-08-26 03:56:31,153 [INFO] 127.0.0.1 - "GET /v1/hello HTTP/1.1" 200 -
+2026-08-26 03:56:32,073 [INFO] 127.0.0.1 - "GET /v1/hello HTTP/1.1" 200 -
+2026-08-26 03:56:38,759 [INFO] 127.0.0.1 - "GET /v1/hello HTTP/1.1" 200 -
+2026-08-26 03:56:48,343 [INFO] [S] action=init_runtime stage=INIT step=0 ok=True dt=0.0s
+2026-08-26 03:56:48,343 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:56:48,368 [INFO] Generated new BFV keys
+2026-08-26 03:56:48,373 [INFO] Detected model: arch=llama num_layers=22 hidden=2048 vocab=32000 u_layers=11
+2026-08-26 03:56:48,385 [INFO] Loaded S submodel: lm_head (2048, 32000) on cpu
+2026-08-26 03:56:48,973 [INFO] Encrypted DB cache hit: /root/autodl-tmp/CipherForge-final-test/crypto/shared_cache/three-party-rms-pir/enc_db/bfv_ct_db_n32000_d2048_p4096.bin
+2026-08-26 03:56:51,463 [INFO] Encrypted DB dropped from main process (workers retain their copies)
+2026-08-26 03:56:51,498 [INFO] [S] action=build_enc_db stage=INIT step=0 ok=True dt=3.2s
+2026-08-26 03:56:51,498 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:56:51,535 [INFO] Loaded hint table from cache: n_entries=32000, partitions=250, lam=80
+2026-08-26 03:56:51,576 [INFO] PartyS device: cuda (V matrix stays on GPU for fast matmul)
+2026-08-26 03:56:51,577 [INFO] Detected model: arch=llama num_layers=22 hidden=2048 vocab=32000 u_layers=11
+2026-08-26 03:56:51,810 [INFO] Loaded S submodel: lm_head (2048, 32000) on cuda
+2026-08-26 03:56:51,815 [INFO] PartyS loaded V matrix: shape=(32000, 2048)
+2026-08-26 03:56:51,817 [INFO] PartyS BFV public key set (from M)
+2026-08-26 03:56:53,203 [INFO] [CryptoWorkerPool] shared.parties.crypto_workers.crypto_s.CryptoSWorker ready: n_workers=1
+2026-08-26 03:56:53,203 [INFO] Safetensor cache cleared
+2026-08-26 03:56:53,203 [INFO] [S] action=pir_prg_setup stage=INIT step=0 ok=True dt=1.7s
+2026-08-26 03:56:53,203 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:56:53,210 [INFO] [CryptoSWorker] skip_enc_db=True (RMS v2 mode)
+2026-08-26 03:56:53,221 [INFO] Loaded hint table from cache: n_entries=32000, partitions=250, lam=80
+2026-08-26 03:56:53,222 [INFO] [CryptoSWorker] init done: n_entries=32000 vec_dim=2048 poly_degree=4096 enc_db=/root/autodl-tmp/CipherForge-final-test/crypto/shared_cache/three-party-rms-pir/enc_db/bfv_ct_db_n32000_d2048_p4096.bin hints=loaded
+2026-08-26 03:56:53,222 [INFO] [CryptoSWorker pid=21277] initialized
+2026-08-26 03:57:22,889 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:57:23,013 [INFO] [S] action=head_forward stage=FORWARD step=0 ok=True dt=4.1s
+2026-08-26 03:57:23,013 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:57:23,076 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:57:23,566 [INFO] [S] action=rms_parity stage=BACKWARD step=0 ok=True dt=0.5s
+2026-08-26 03:57:23,593 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:57:23,952 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:57:23,964 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:57:24,235 [INFO] [S] action=share_compute stage=BACKWARD step=0 ok=True dt=0.3s
+2026-08-26 03:57:24,237 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:57:28,551 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:57:28,559 [INFO] [S] action=head_forward stage=FORWARD step=1 ok=True dt=0.2s
+2026-08-26 03:57:28,559 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:57:28,693 [INFO] [S] action=rms_parity stage=BACKWARD step=1 ok=True dt=0.1s
+2026-08-26 03:57:28,717 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:57:29,075 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:57:29,087 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:57:29,360 [INFO] [S] action=share_compute stage=BACKWARD step=1 ok=True dt=0.3s
+2026-08-26 03:57:29,363 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:57:33,383 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:57:33,391 [INFO] [S] action=head_forward stage=FORWARD step=2 ok=True dt=0.2s
+2026-08-26 03:57:33,392 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:57:33,496 [INFO] [S] action=rms_parity stage=BACKWARD step=2 ok=True dt=0.0s
+2026-08-26 03:57:33,526 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:57:33,862 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:57:33,885 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:57:34,181 [INFO] [S] action=share_compute stage=BACKWARD step=2 ok=True dt=0.3s
+2026-08-26 03:57:34,183 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:57:38,412 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:57:38,420 [INFO] [S] action=head_forward stage=FORWARD step=3 ok=True dt=0.2s
+2026-08-26 03:57:38,420 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:57:38,535 [INFO] [S] action=rms_parity stage=BACKWARD step=3 ok=True dt=0.1s
+2026-08-26 03:57:38,558 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:57:38,896 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:57:38,916 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:57:39,201 [INFO] [S] action=share_compute stage=BACKWARD step=3 ok=True dt=0.3s
+2026-08-26 03:57:39,202 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:57:43,372 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:57:43,381 [INFO] [S] action=head_forward stage=FORWARD step=4 ok=True dt=0.2s
+2026-08-26 03:57:43,381 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:57:43,489 [INFO] [S] action=rms_parity stage=BACKWARD step=4 ok=True dt=0.0s
+2026-08-26 03:57:43,513 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:57:43,849 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:57:43,861 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:57:44,165 [INFO] [S] action=share_compute stage=BACKWARD step=4 ok=True dt=0.3s
+2026-08-26 03:57:44,167 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:57:48,300 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:57:48,308 [INFO] [S] action=head_forward stage=FORWARD step=5 ok=True dt=0.3s
+2026-08-26 03:57:48,308 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:57:48,451 [INFO] [S] action=rms_parity stage=BACKWARD step=5 ok=True dt=0.1s
+2026-08-26 03:57:48,483 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:57:48,799 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:57:48,813 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:57:49,115 [INFO] [S] action=share_compute stage=BACKWARD step=5 ok=True dt=0.3s
+2026-08-26 03:57:49,117 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:57:53,219 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:57:53,228 [INFO] [S] action=head_forward stage=FORWARD step=6 ok=True dt=0.2s
+2026-08-26 03:57:53,228 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:57:53,361 [INFO] [S] action=rms_parity stage=BACKWARD step=6 ok=True dt=0.1s
+2026-08-26 03:57:53,385 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:57:53,718 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:57:53,728 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:57:54,013 [INFO] [S] action=share_compute stage=BACKWARD step=6 ok=True dt=0.3s
+2026-08-26 03:57:54,015 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:57:58,049 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:57:58,057 [INFO] [S] action=head_forward stage=FORWARD step=7 ok=True dt=0.2s
+2026-08-26 03:57:58,057 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:57:58,170 [INFO] [S] action=rms_parity stage=BACKWARD step=7 ok=True dt=0.1s
+2026-08-26 03:57:58,194 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:57:58,523 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:57:58,534 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:57:58,863 [INFO] [S] action=share_compute stage=BACKWARD step=7 ok=True dt=0.3s
+2026-08-26 03:57:58,865 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:58:02,926 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:58:02,935 [INFO] [S] action=head_forward stage=FORWARD step=8 ok=True dt=0.2s
+2026-08-26 03:58:02,935 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:58:03,073 [INFO] [S] action=rms_parity stage=BACKWARD step=8 ok=True dt=0.1s
+2026-08-26 03:58:03,097 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:58:03,425 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:58:03,434 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:58:03,731 [INFO] [S] action=share_compute stage=BACKWARD step=8 ok=True dt=0.3s
+2026-08-26 03:58:03,734 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:58:07,786 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:58:07,794 [INFO] [S] action=head_forward stage=FORWARD step=9 ok=True dt=0.2s
+2026-08-26 03:58:07,794 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:58:07,937 [INFO] [S] action=rms_parity stage=BACKWARD step=9 ok=True dt=0.1s
+2026-08-26 03:58:07,960 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:58:08,301 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:58:08,312 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:58:08,625 [INFO] [S] action=share_compute stage=BACKWARD step=9 ok=True dt=0.3s
+2026-08-26 03:58:08,628 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:58:12,942 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:58:12,958 [INFO] [S] action=val stage=EVAL step=0 ok=True dt=0.2s
+2026-08-26 03:58:12,963 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:58:16,316 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:58:16,331 [INFO] [S] action=val stage=EVAL step=0 ok=True dt=0.2s
+2026-08-26 03:58:16,336 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:58:19,639 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:58:19,658 [INFO] [S] action=val stage=EVAL step=0 ok=True dt=0.2s
+2026-08-26 03:58:19,664 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:58:22,943 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:58:22,957 [INFO] [S] action=val stage=EVAL step=0 ok=True dt=0.2s
+2026-08-26 03:58:22,962 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:58:26,274 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:58:26,289 [INFO] [S] action=val stage=EVAL step=0 ok=True dt=0.2s
+2026-08-26 03:58:26,294 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:58:29,584 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:58:29,598 [INFO] [S] action=val stage=EVAL step=0 ok=True dt=0.2s
+2026-08-26 03:58:29,604 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:58:32,792 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:58:32,806 [INFO] [S] action=val stage=EVAL step=0 ok=True dt=0.2s
+2026-08-26 03:58:32,811 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:58:36,046 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:58:36,060 [INFO] [S] action=val stage=EVAL step=0 ok=True dt=0.2s
+2026-08-26 03:58:36,065 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:58:39,268 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:58:39,283 [INFO] [S] action=val stage=EVAL step=0 ok=True dt=0.2s
+2026-08-26 03:58:39,288 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:58:42,525 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:58:42,539 [INFO] [S] action=val stage=EVAL step=0 ok=True dt=0.2s
+2026-08-26 03:58:42,544 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:58:45,800 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:58:45,814 [INFO] [S] action=val stage=EVAL step=0 ok=True dt=0.2s
+2026-08-26 03:58:45,819 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:58:49,090 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:58:49,104 [INFO] [S] action=val stage=EVAL step=0 ok=True dt=0.2s
+2026-08-26 03:58:49,109 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:58:52,342 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:58:52,357 [INFO] [S] action=val stage=EVAL step=0 ok=True dt=0.2s
+2026-08-26 03:58:52,362 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:58:55,581 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:58:55,595 [INFO] [S] action=val stage=EVAL step=0 ok=True dt=0.2s
+2026-08-26 03:58:55,601 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:58:58,816 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:58:58,831 [INFO] [S] action=val stage=EVAL step=0 ok=True dt=0.2s
+2026-08-26 03:58:58,836 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:59:02,015 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:59:02,029 [INFO] [S] action=val stage=EVAL step=0 ok=True dt=0.2s
+2026-08-26 03:59:02,034 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:59:05,292 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:59:05,306 [INFO] [S] action=val stage=EVAL step=0 ok=True dt=0.2s
+2026-08-26 03:59:05,311 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:59:08,511 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:59:08,525 [INFO] [S] action=val stage=EVAL step=0 ok=True dt=0.2s
+2026-08-26 03:59:08,530 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:59:11,823 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:59:11,838 [INFO] [S] action=val stage=EVAL step=0 ok=True dt=0.2s
+2026-08-26 03:59:11,843 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:59:15,034 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:59:15,048 [INFO] [S] action=val stage=EVAL step=0 ok=True dt=0.2s
+2026-08-26 03:59:15,053 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:59:18,202 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:59:18,215 [INFO] [S] action=val stage=EVAL step=0 ok=True dt=0.2s
+2026-08-26 03:59:18,220 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:59:21,515 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:59:21,528 [INFO] [S] action=val stage=EVAL step=0 ok=True dt=0.2s
+2026-08-26 03:59:21,533 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:59:24,750 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:59:24,762 [INFO] [S] action=val stage=EVAL step=0 ok=True dt=0.2s
+2026-08-26 03:59:24,768 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:59:27,979 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:59:27,993 [INFO] [S] action=val stage=EVAL step=0 ok=True dt=0.2s
+2026-08-26 03:59:27,998 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:59:31,259 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:59:31,272 [INFO] [S] action=val stage=EVAL step=0 ok=True dt=0.2s
+2026-08-26 03:59:31,277 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:59:34,435 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:59:34,448 [INFO] [S] action=val stage=EVAL step=0 ok=True dt=0.2s
+2026-08-26 03:59:34,453 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:59:37,583 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:59:37,595 [INFO] [S] action=val stage=EVAL step=0 ok=True dt=0.2s
+2026-08-26 03:59:37,601 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:59:40,707 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:59:40,720 [INFO] [S] action=val stage=EVAL step=0 ok=True dt=0.2s
+2026-08-26 03:59:40,726 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:59:43,828 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:59:43,841 [INFO] [S] action=val stage=EVAL step=0 ok=True dt=0.2s
+2026-08-26 03:59:43,846 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:59:47,027 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:59:47,040 [INFO] [S] action=val stage=EVAL step=0 ok=True dt=0.2s
+2026-08-26 03:59:47,045 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:59:50,167 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:59:50,180 [INFO] [S] action=val stage=EVAL step=0 ok=True dt=0.2s
+2026-08-26 03:59:50,185 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:59:53,375 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:59:53,388 [INFO] [S] action=val stage=EVAL step=0 ok=True dt=0.2s
+2026-08-26 03:59:53,393 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:59:56,522 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:59:56,535 [INFO] [S] action=val stage=EVAL step=0 ok=True dt=0.2s
+2026-08-26 03:59:56,540 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 03:59:59,681 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 03:59:59,694 [INFO] [S] action=val stage=EVAL step=0 ok=True dt=0.2s
+2026-08-26 03:59:59,699 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 04:00:02,839 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 04:00:02,853 [INFO] [S] action=val stage=EVAL step=0 ok=True dt=0.2s
+2026-08-26 04:00:02,858 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 04:00:05,982 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 04:00:05,995 [INFO] [S] action=val stage=EVAL step=0 ok=True dt=0.2s
+2026-08-26 04:00:06,000 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 04:00:09,228 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 04:00:09,242 [INFO] [S] action=val stage=EVAL step=0 ok=True dt=0.2s
+2026-08-26 04:00:09,247 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 04:00:09,999 [INFO] [_V_f32] returning device=cuda:0
+2026-08-26 04:00:10,005 [INFO] [S] action=val stage=EVAL step=0 ok=True dt=0.0s
+2026-08-26 04:00:10,006 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+2026-08-26 04:00:12,423 [INFO] [S] action=shutdown stage=EVAL step=0 ok=True dt=0.4s
+2026-08-26 04:00:12,423 [INFO] 127.0.0.1 - "POST /v1/action HTTP/1.1" 200 -
+/root/miniconda3/lib/python3.12/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 6 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

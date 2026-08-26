@@ -1,0 +1,63 @@
+{
+  "name": "/root/CipherForge/final-test-data/three-party-rms-pir_20260826-085706/adapter",
+  "task_type": "multiclass",
+  "n": 203,
+  "n_classes": 7,
+  "class_outputs": [
+    "a)",
+    "b)",
+    "c)",
+    "d)",
+    "e)",
+    "f)",
+    "g)"
+  ],
+  "prior_correction": 0.0,
+  "accuracy": 0.35467980295566504,
+  "macro_f1": 0.20870570107858244,
+  "weighted_f1": 0.29127608218782974,
+  "per_class": {
+    "a)": {
+      "precision": 0.29850746268656714,
+      "recall": 0.39215686274509803,
+      "f1-score": 0.3389830508474576,
+      "support": 51.0
+    },
+    "b)": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 13.0
+    },
+    "c)": {
+      "precision": 0.9090909090909091,
+      "recall": 0.12987012987012986,
+      "f1-score": 0.22727272727272727,
+      "support": 77.0
+    },
+    "d)": {
+      "precision": 0.336,
+      "recall": 0.8235294117647058,
+      "f1-score": 0.4772727272727273,
+      "support": 51.0
+    },
+    "e)": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 11.0
+    },
+    "f)": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 0.0
+    },
+    "g)": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 0.0
+    }
+  }
+}

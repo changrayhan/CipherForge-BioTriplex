@@ -1,0 +1,134 @@
+{
+  "mode": "three-party-rms-pir",
+  "label": "三进程RMS-PIR",
+  "run_dir": "/root/CipherForge/final-test-data/three-party-rms-pir_20260826-105122",
+  "dataset": "biotriplex7",
+  "n_train": 734,
+  "params": {
+    "learning_rate": 0.0002,
+    "weight_decay": 0.01,
+    "warmup_steps": 100,
+    "lora_rank": 8,
+    "lora_alpha": 16,
+    "lora_dropout": 0.05,
+    "max_seq_len": 128,
+    "seed": 42,
+    "epochs": 6,
+    "batch_size": 4
+  },
+  "steps": 1095,
+  "epochs_table": [
+    {
+      "epoch": 0,
+      "train_loss": 0.0002189907219891991,
+      "val_ce_loss": 1.2740752389194654,
+      "val_auprc": null,
+      "val_auc": null,
+      "val_acc": 0.5447761194029851
+    },
+    {
+      "epoch": 1,
+      "train_loss": 0.0001791292200974428,
+      "val_ce_loss": 1.44186677483006,
+      "val_auprc": null,
+      "val_auc": null,
+      "val_acc": 0.44029850746268656
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.0001662064119766319,
+      "val_ce_loss": 1.1732161299115544,
+      "val_auprc": null,
+      "val_auc": null,
+      "val_acc": 0.6119402985074627
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.00015927142784243723,
+      "val_ce_loss": 1.2388292550750035,
+      "val_auprc": null,
+      "val_auc": null,
+      "val_acc": 0.6343283582089553
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.00015264521531068562,
+      "val_ce_loss": 1.4920708876567312,
+      "val_auprc": null,
+      "val_auc": null,
+      "val_acc": 0.5970149253731343
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.00015065709098440702,
+      "val_ce_loss": 1.4839739291706944,
+      "val_auprc": null,
+      "val_auc": null,
+      "val_acc": 0.6044776119402985
+    }
+  ],
+  "test": {
+    "name": "/root/CipherForge/final-test-data/three-party-rms-pir_20260826-105122/adapter",
+    "task_type": "multiclass",
+    "n": 203,
+    "n_classes": 7,
+    "class_outputs": [
+      "a)",
+      "b)",
+      "c)",
+      "d)",
+      "e)",
+      "f)",
+      "g)"
+    ],
+    "prior_correction": 0.0,
+    "accuracy": 0.6699507389162561,
+    "macro_f1": 0.5779553530229158,
+    "weighted_f1": 0.6727018183121394,
+    "per_class": {
+      "a)": {
+        "precision": 0.9142857142857143,
+        "recall": 0.6274509803921569,
+        "f1-score": 0.7441860465116279,
+        "support": 51.0
+      },
+      "b)": {
+        "precision": 1.0,
+        "recall": 0.23076923076923078,
+        "f1-score": 0.375,
+        "support": 13.0
+      },
+      "c)": {
+        "precision": 0.6588235294117647,
+        "recall": 0.7272727272727273,
+        "f1-score": 0.691358024691358,
+        "support": 77.0
+      },
+      "d)": {
+        "precision": 0.6724137931034483,
+        "recall": 0.7647058823529411,
+        "f1-score": 0.7155963302752294,
+        "support": 51.0
+      },
+      "e)": {
+        "precision": 0.2727272727272727,
+        "recall": 0.5454545454545454,
+        "f1-score": 0.36363636363636365,
+        "support": 11.0
+      },
+      "f)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 0.0
+      },
+      "g)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 0.0
+      }
+    }
+  },
+  "loss_curve_png": "/root/CipherForge/final-test-data/three-party-rms-pir_20260826-105122/loss_curve.png"
+}

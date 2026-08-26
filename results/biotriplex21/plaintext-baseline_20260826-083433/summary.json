@@ -1,0 +1,320 @@
+{
+  "mode": "plaintext-baseline",
+  "label": "明文LoRA基准",
+  "run_dir": "/root/CipherForge/final-test-data/plaintext-baseline_20260826-083433",
+  "dataset": "biotriplex21obal",
+  "n_train": 1024,
+  "params": {
+    "learning_rate": 0.0002,
+    "weight_decay": 0.01,
+    "warmup_steps": 100,
+    "lora_rank": 8,
+    "lora_alpha": 16,
+    "lora_dropout": 0.05,
+    "max_seq_len": 128,
+    "seed": 42,
+    "epochs": 6,
+    "batch_size": 4
+  },
+  "steps": 1536,
+  "train": {
+    "first_loss": 3.812,
+    "min_loss": 0.07602,
+    "final_loss": 0.1376,
+    "best_eval_loss": 1.008,
+    "epochs_done": 5.977
+  },
+  "test": {
+    "name": "/root/CipherForge/final-test-data/plaintext-baseline_20260826-083433",
+    "task_type": "multiclass",
+    "n": 230,
+    "n_classes": 21,
+    "class_outputs": [
+      "a)",
+      "b)",
+      "c)",
+      "d)",
+      "e)",
+      "f)",
+      "g)",
+      "h)",
+      "i)",
+      "j)",
+      "k)",
+      "l)",
+      "m)",
+      "n)",
+      "o)",
+      "p)",
+      "q)",
+      "r)",
+      "s)",
+      "t)",
+      "u)"
+    ],
+    "prior_correction": 0.5,
+    "accuracy": 0.3130434782608696,
+    "macro_f1": 0.09335841463501038,
+    "weighted_f1": 0.25340949522263123,
+    "per_class": {
+      "a)": {
+        "precision": 0.07692307692307693,
+        "recall": 0.05,
+        "f1-score": 0.06060606060606061,
+        "support": 20.0
+      },
+      "b)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1.0
+      },
+      "c)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1.0
+      },
+      "d)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 6.0
+      },
+      "e)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 2.0
+      },
+      "f)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 7.0
+      },
+      "g)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 3.0
+      },
+      "h)": {
+        "precision": 0.9375,
+        "recall": 0.6521739130434783,
+        "f1-score": 0.7692307692307693,
+        "support": 23.0
+      },
+      "i)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1.0
+      },
+      "j)": {
+        "precision": 0.36153846153846153,
+        "recall": 0.8103448275862069,
+        "f1-score": 0.5,
+        "support": 58.0
+      },
+      "k)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 18.0
+      },
+      "l)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 4.0
+      },
+      "m)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 6.0
+      },
+      "n)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 15.0
+      },
+      "o)": {
+        "precision": 0.38461538461538464,
+        "recall": 0.25,
+        "f1-score": 0.30303030303030304,
+        "support": 20.0
+      },
+      "p)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 4.0
+      },
+      "q)": {
+        "precision": 0.2,
+        "recall": 0.2,
+        "f1-score": 0.2,
+        "support": 5.0
+      },
+      "r)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 5.0
+      },
+      "s)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 4.0
+      },
+      "t)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1.0
+      },
+      "u)": {
+        "precision": 0.14285714285714285,
+        "recall": 0.11538461538461539,
+        "f1-score": 0.1276595744680851,
+        "support": 26.0
+      }
+    },
+    "accuracy_prior": 0.017391304347826087,
+    "macro_f1_prior": 0.0016420361247947454,
+    "weighted_f1_prior": 0.0005997001499250374,
+    "per_class_prior": {
+      "a)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 20.0
+      },
+      "b)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1.0
+      },
+      "c)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1.0
+      },
+      "d)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 6.0
+      },
+      "e)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 2.0
+      },
+      "f)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 7.0
+      },
+      "g)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 3.0
+      },
+      "h)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 23.0
+      },
+      "i)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1.0
+      },
+      "j)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 58.0
+      },
+      "k)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 18.0
+      },
+      "l)": {
+        "precision": 0.017543859649122806,
+        "recall": 1.0,
+        "f1-score": 0.034482758620689655,
+        "support": 4.0
+      },
+      "m)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 6.0
+      },
+      "n)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 15.0
+      },
+      "o)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 20.0
+      },
+      "p)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 4.0
+      },
+      "q)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 5.0
+      },
+      "r)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 5.0
+      },
+      "s)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 4.0
+      },
+      "t)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1.0
+      },
+      "u)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 26.0
+      }
+    }
+  },
+  "loss_curve_png": "/root/CipherForge/final-test-data/plaintext-baseline_20260826-083433/loss_curve.png"
+}

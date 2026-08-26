@@ -1,0 +1,110 @@
+{
+  "name": "/root/CipherForge/final-test-data/plaintext-baseline_20260826-084556",
+  "task_type": "multiclass",
+  "n": 203,
+  "n_classes": 7,
+  "class_outputs": [
+    "a)",
+    "b)",
+    "c)",
+    "d)",
+    "e)",
+    "f)",
+    "g)"
+  ],
+  "prior_correction": 0.5,
+  "accuracy": 0.541871921182266,
+  "macro_f1": 0.39248245120759057,
+  "weighted_f1": 0.4983099070283031,
+  "per_class": {
+    "a)": {
+      "precision": 0.625,
+      "recall": 0.5882352941176471,
+      "f1-score": 0.6060606060606061,
+      "support": 51.0
+    },
+    "b)": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 13.0
+    },
+    "c)": {
+      "precision": 0.525,
+      "recall": 0.8181818181818182,
+      "f1-score": 0.6395939086294417,
+      "support": 77.0
+    },
+    "d)": {
+      "precision": 1.0,
+      "recall": 0.19607843137254902,
+      "f1-score": 0.32786885245901637,
+      "support": 51.0
+    },
+    "e)": {
+      "precision": 0.28,
+      "recall": 0.6363636363636364,
+      "f1-score": 0.3888888888888889,
+      "support": 11.0
+    },
+    "f)": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 0.0
+    },
+    "g)": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 0.0
+    }
+  },
+  "accuracy_prior": 0.019704433497536946,
+  "macro_f1_prior": 0.014109347442680775,
+  "weighted_f1_prior": 0.037462750106428265,
+  "per_class_prior": {
+    "a)": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 51.0
+    },
+    "b)": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 13.0
+    },
+    "c)": {
+      "precision": 1.0,
+      "recall": 0.05194805194805195,
+      "f1-score": 0.09876543209876543,
+      "support": 77.0
+    },
+    "d)": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 51.0
+    },
+    "e)": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 11.0
+    },
+    "f)": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 0.0
+    },
+    "g)": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 0.0
+    }
+  }
+}

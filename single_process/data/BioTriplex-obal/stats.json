@@ -1,0 +1,64 @@
+{
+  "source": "/root/CipherForge/BioTriplex/data/Preprocessed BioTriplex/",
+  "task": "classification",
+  "generated_at": "2026-08-26T00:27:07",
+  "splits": {
+    "train": {
+      "rows": 734,
+      "label_counts": {
+        "pathological": 179,
+        "modulatory": 72,
+        "expression change": 238,
+        "diagnosis": 174,
+        "therapy": 71
+      },
+      "label_names": [
+        "pathological",
+        "modulatory",
+        "expression change",
+        "diagnosis",
+        "therapy",
+        "no relation",
+        "relation undefined"
+      ]
+    },
+    "val": {
+      "rows": 134,
+      "label_counts": {
+        "therapy": 18,
+        "diagnosis": 18,
+        "pathological": 41,
+        "expression change": 56,
+        "modulatory": 1
+      },
+      "label_names": [
+        "pathological",
+        "modulatory",
+        "expression change",
+        "diagnosis",
+        "therapy",
+        "no relation",
+        "relation undefined"
+      ]
+    },
+    "test": {
+      "rows": 203,
+      "label_counts": {
+        "expression change": 77,
+        "diagnosis": 51,
+        "therapy": 11,
+        "modulatory": 13,
+        "pathological": 51
+      },
+      "label_names": [
+        "pathological",
+        "modulatory",
+        "expression change",
+        "diagnosis",
+        "therapy",
+        "no relation",
+        "relation undefined"
+      ]
+    }
+  }
+}

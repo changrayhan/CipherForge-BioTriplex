@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <title>演枢台 · 总控</title>
+  <style>
+    body{font-family:system-ui,sans-serif;margin:24px}
+    .card{border:1px solid #ddd;border-radius:8px;padding:12px;margin:8px 0;white-space:pre-wrap}
+    button{margin:2px 4px;padding:6px 10px}
+    #stamp{display:inline-block;border:2px dashed #aaa;border-radius:8px;padding:6px 10px;cursor:pointer;user-select:none}
+  </style>
+</head>
+<body>
+  <h1>演枢台 · 总控 <span id="stamp" title="连击 5 次进入工程抽屉">印章</span></h1>
+  <div id="mode" class="card"></div>
+  <div id="nodes" class="card"></div>
+  <div id="session" class="card"></div>
+  <div id="eval" class="card"></div>
+  <div id="events" class="card"></div>
+  <button onclick="probe()">节点探活</button>
+  <button onclick="startSession()">开始会话</button>
+  <button onclick="fallback()">跳过训练 · 加载预微调检查点（L1）</button>
+  <button onclick="runEval('acc')">评测 acc</button>
+  <button onclick="runEval('auprc')">评测 auprc</button>
+  <button onclick="runEval('macro_f1')">评测 macro_f1</button>
+  <script>
+    async function refresh() {
+      const s = await (await fetch("/api/state")).json();
+      document.getElementById("mode").textContent = "模式：" + s.mode;
+      document.getElementById("nodes").textContent =
+        "节点：U=" + s.nodes.U.status + " M=" + s.nodes.M.status + " S=" + s.nodes.S.status;
+      document.getElementById("session").textContent =
+        "会话：" + (s.session ? JSON.stringify(s.session) : "无");
+      const ev = s.eval;
+      document.getElementById("eval").textContent =
+        "评测：" + (ev ? JSON.stringify(ev, null, 2) : "未运行");
+    }
+    function probe() { fetch("/api/nodes/probe").then(refresh); }
+    function startSession() { fetch("/api/session/start").then(refresh); }
+    async function fallback() {
+      const r = await (await fetch("/api/fallback/pretrained", { method: "POST", body: "{}" })).json();
+      alert(JSON.stringify(r, null, 2));
+      refresh();
+    }
+    async function runEval(test_id) {
+      const r = await (await fetch("/api/eval/run", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ test_id }),
+      })).json();
+      alert(JSON.stringify(r, null, 2));
+      refresh();
+    }
+    // docs/04 §2.1：连击左上角印章 5 次 → 工程控制台（这里直接触发 L1 兜底）
+    let stampClicks = [];
+    document.getElementById("stamp").addEventListener("click", () => {
+      const now = Date.now();
+      stampClicks = stampClicks.filter((t) => now - t < 3000);
+      stampClicks.push(now);
+      if (stampClicks.length >= 5) {
+        stampClicks = [];
+        fallback();
+      }
+    });
+    const es = new EventSource("/api/stream");
+    es.onmessage = (e) => {
+      const ev = JSON.parse(e.data);
+      const box = document.getElementById("events");
+      box.textContent = ev.ts + " " + ev.type + " " + (ev.payload ? ev.payload.msg : "") + "\n" + box.textContent;
+      refresh();
+    };
+    refresh();
+  </script>
+</body>
+</html>

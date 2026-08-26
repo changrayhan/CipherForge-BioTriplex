@@ -1,0 +1,62 @@
+{
+  "name": "/root/CipherForge/final-test-data/plaintext-baseline_20260826-075735",
+  "task_type": "multiclass",
+  "n": 203,
+  "n_classes": 7,
+  "class_outputs": [
+    "a)",
+    "b)",
+    "c)",
+    "d)",
+    "e)",
+    "f)",
+    "g)"
+  ],
+  "accuracy": 0.6108374384236454,
+  "macro_f1": 0.45913858159677556,
+  "weighted_f1": 0.5877394459997389,
+  "per_class": {
+    "a)": {
+      "precision": 0.53125,
+      "recall": 0.6666666666666666,
+      "f1-score": 0.591304347826087,
+      "support": 51.0
+    },
+    "b)": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 13.0
+    },
+    "c)": {
+      "precision": 0.6086956521739131,
+      "recall": 0.7272727272727273,
+      "f1-score": 0.6627218934911243,
+      "support": 77.0
+    },
+    "d)": {
+      "precision": 0.7380952380952381,
+      "recall": 0.6078431372549019,
+      "f1-score": 0.6666666666666666,
+      "support": 51.0
+    },
+    "e)": {
+      "precision": 0.6,
+      "recall": 0.2727272727272727,
+      "f1-score": 0.375,
+      "support": 11.0
+    },
+    "f)": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 0.0
+    },
+    "g)": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 0.0
+    }
+  }
+}

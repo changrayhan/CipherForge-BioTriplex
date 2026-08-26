@@ -1,0 +1,11 @@
+name: cipherforge-3p
+channels:
+  - pytorch
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - pip
+  - cuda-toolkit=13.0
+  - pip:
+      - -r requirements.txt

@@ -1,0 +1,18 @@
+{
+  "model_id": "/root/hf_cache/hub/models--TinyLlama--TinyLlama-1.1B-Chat-v1.0/snapshots/fe8a4ea1ffedaf415f4da2f062534de366a451e6",
+  "data_dir": "/root/CipherForge/CipherForge-ClinVar/single_process/data/BioTriplex-obal",
+  "out_dir": "/root/CipherForge/final-test-data/plaintext-baseline_20260826-084556",
+  "max_seq_len": 2048,
+  "epochs": 6.0,
+  "max_steps": 0,
+  "batch_size": 4,
+  "grad_accum": 1,
+  "lr": 0.0002,
+  "lora_r": 8,
+  "lora_alpha": 16,
+  "lora_dropout": 0.05,
+  "eval_steps": 255,
+  "save_total_limit": 6,
+  "early_stop_patience": 0,
+  "seed": 42
+}

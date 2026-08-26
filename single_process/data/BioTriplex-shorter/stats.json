@@ -1,0 +1,37 @@
+{
+  "source": "/root/CipherForge/BioTriplex/data/Preprocessed BioTriplex/",
+  "task": "generation",
+  "generated_at": "2026-08-26T00:27:07",
+  "splits": {
+    "train": {
+      "rows": 843,
+      "empty_count": 122,
+      "non_empty_count": 721,
+      "entity_type_counts": {
+        "DISEASE": 5209,
+        "GENE": 9922,
+        "RELATION": 644
+      }
+    },
+    "val": {
+      "rows": 181,
+      "empty_count": 36,
+      "non_empty_count": 145,
+      "entity_type_counts": {
+        "DISEASE": 901,
+        "GENE": 2072,
+        "RELATION": 105
+      }
+    },
+    "test": {
+      "rows": 174,
+      "empty_count": 26,
+      "non_empty_count": 148,
+      "entity_type_counts": {
+        "DISEASE": 1026,
+        "GENE": 2892,
+        "RELATION": 166
+      }
+    }
+  }
+}

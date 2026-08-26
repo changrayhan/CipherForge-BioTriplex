@@ -1,0 +1,23 @@
+[
+  {
+    "epoch": 0,
+    "timestamp": 1787706970.7442281,
+    "elapsed_s": 983.7141499519348,
+    "train_loss": 0.00021733872877444075,
+    "train_steps": 183,
+    "avg_step_time_ms": 4781.4143602965305,
+    "avg_gpu_mem_mb": 2606.2936651511272,
+    "val_ce_loss": 1.4669160151779994,
+    "val_accuracy": 0.3208955223880597,
+    "val_macro_f1": 0.18593613100093656,
+    "val_weighted_f1": 0.24122499078972937,
+    "val_samples": 134,
+    "val_entity_micro_f1": 0.3208955223880597,
+    "val_letter_micro_f1": 0.3208955223880597,
+    "val_micro_accuracy": 0.3208955223880597,
+    "val_micro_precision": 0.3208955223880597,
+    "val_micro_recall": 0.3208955223880597,
+    "val_auprc": null,
+    "val_auc": null
+  }
+]

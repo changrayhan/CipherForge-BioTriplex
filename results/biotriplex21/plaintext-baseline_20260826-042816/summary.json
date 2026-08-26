@@ -1,0 +1,188 @@
+{
+  "mode": "plaintext-baseline",
+  "label": "明文LoRA基准",
+  "run_dir": "/root/CipherForge/final-test-data/plaintext-baseline_20260826-042816",
+  "dataset": "biotriplex21",
+  "n_train": 801,
+  "params": {
+    "learning_rate": 0.0002,
+    "weight_decay": 0.01,
+    "warmup_steps": 100,
+    "lora_rank": 8,
+    "lora_alpha": 16,
+    "lora_dropout": 0.05,
+    "max_seq_len": 128,
+    "seed": 42,
+    "epochs": 6,
+    "batch_size": 4
+  },
+  "steps": 1206,
+  "train": {
+    "first_loss": 3.919,
+    "min_loss": 0.1176,
+    "final_loss": 0.2715,
+    "best_eval_loss": 0.987,
+    "epochs_done": 5.97
+  },
+  "test": {
+    "name": "/root/CipherForge/final-test-data/plaintext-baseline_20260826-042816",
+    "task_type": "multiclass",
+    "n": 230,
+    "n_classes": 21,
+    "class_outputs": [
+      "a)",
+      "b)",
+      "c)",
+      "d)",
+      "e)",
+      "f)",
+      "g)",
+      "h)",
+      "i)",
+      "j)",
+      "k)",
+      "l)",
+      "m)",
+      "n)",
+      "o)",
+      "p)",
+      "q)",
+      "r)",
+      "s)",
+      "t)",
+      "u)"
+    ],
+    "accuracy": 0.23043478260869565,
+    "macro_f1": 0.04731233479294462,
+    "weighted_f1": 0.1686747979779777,
+    "per_class": {
+      "a)": {
+        "precision": 0.16216216216216217,
+        "recall": 0.3,
+        "f1-score": 0.21052631578947367,
+        "support": 20.0
+      },
+      "b)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1.0
+      },
+      "c)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1.0
+      },
+      "d)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 6.0
+      },
+      "e)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 2.0
+      },
+      "f)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 7.0
+      },
+      "g)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 3.0
+      },
+      "h)": {
+        "precision": 0.25,
+        "recall": 0.08695652173913043,
+        "f1-score": 0.12903225806451613,
+        "support": 23.0
+      },
+      "i)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1.0
+      },
+      "j)": {
+        "precision": 0.3669724770642202,
+        "recall": 0.6896551724137931,
+        "f1-score": 0.47904191616766467,
+        "support": 58.0
+      },
+      "k)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 18.0
+      },
+      "l)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 4.0
+      },
+      "m)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 6.0
+      },
+      "n)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 15.0
+      },
+      "o)": {
+        "precision": 0.0851063829787234,
+        "recall": 0.2,
+        "f1-score": 0.11940298507462686,
+        "support": 20.0
+      },
+      "p)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 4.0
+      },
+      "q)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 5.0
+      },
+      "r)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 5.0
+      },
+      "s)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 4.0
+      },
+      "t)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1.0
+      },
+      "u)": {
+        "precision": 0.1,
+        "recall": 0.038461538461538464,
+        "f1-score": 0.05555555555555555,
+        "support": 26.0
+      }
+    }
+  },
+  "loss_curve_png": "/root/CipherForge/final-test-data/plaintext-baseline_20260826-042816/loss_curve.png"
+}

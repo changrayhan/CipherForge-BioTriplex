@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+
+# Editors / OS
+.DS_Store
+.idea/
+.vscode/
+.cursor/
+
+# Large binaries / model artifacts (never commit)
+*.pt
+*.pth
+*.safetensors
+*.bin
+*.onnx
+checkpoints/
+ckpt/
+adapter/
+keys/
+*.pem
+*.token
+
+# Runtime scratch / ClinVar-specific data
+OUT=/
+data/qa/
+party_u/data/
+logs/tmp/
+
+# Debug backups
+*.bak*

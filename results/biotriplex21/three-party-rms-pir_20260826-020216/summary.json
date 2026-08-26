@@ -1,0 +1,207 @@
+{
+  "mode": "three-party-rms-pir",
+  "label": "三进程RMS-PIR",
+  "run_dir": "/root/CipherForge/final-test-data/three-party-rms-pir_20260826-020216",
+  "dataset": "biotriplex21",
+  "n_train": 801,
+  "params": {
+    "learning_rate": 0.0002,
+    "weight_decay": 0.01,
+    "warmup_steps": 100,
+    "lora_rank": 8,
+    "lora_alpha": 16,
+    "lora_dropout": 0.05,
+    "max_seq_len": 128,
+    "seed": 42,
+    "epochs": 3,
+    "batch_size": 4
+  },
+  "steps": 600,
+  "epochs_table": [
+    {
+      "epoch": 0,
+      "train_loss": 0.00022330284118652344,
+      "val_ce_loss": 2.7411890868088737,
+      "val_auprc": null,
+      "val_auc": null,
+      "val_acc": 0.2483221476510067
+    },
+    {
+      "epoch": 1,
+      "train_loss": 0.00018716812133789062,
+      "val_ce_loss": 2.423712134270851,
+      "val_auprc": null,
+      "val_auc": null,
+      "val_acc": 0.21476510067114093
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.00016110897064208985,
+      "val_ce_loss": 2.6180300092917506,
+      "val_auprc": null,
+      "val_auc": null,
+      "val_acc": 0.2550335570469799
+    }
+  ],
+  "test": {
+    "name": "/root/CipherForge/final-test-data/three-party-rms-pir_20260826-020216/adapter",
+    "task_type": "multiclass",
+    "n": 230,
+    "n_classes": 21,
+    "class_outputs": [
+      "a)",
+      "b)",
+      "c)",
+      "d)",
+      "e)",
+      "f)",
+      "g)",
+      "h)",
+      "i)",
+      "j)",
+      "k)",
+      "l)",
+      "m)",
+      "n)",
+      "o)",
+      "p)",
+      "q)",
+      "r)",
+      "s)",
+      "t)",
+      "u)"
+    ],
+    "accuracy": 0.24782608695652175,
+    "macro_f1": 0.08424968190888515,
+    "weighted_f1": 0.18649517540347788,
+    "per_class": {
+      "a)": {
+        "precision": 0.2222222222222222,
+        "recall": 0.2,
+        "f1-score": 0.21052631578947367,
+        "support": 20.0
+      },
+      "b)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1.0
+      },
+      "c)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1.0
+      },
+      "d)": {
+        "precision": 0.1111111111111111,
+        "recall": 0.3333333333333333,
+        "f1-score": 0.16666666666666666,
+        "support": 6.0
+      },
+      "e)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 2.0
+      },
+      "f)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 7.0
+      },
+      "g)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 3.0
+      },
+      "h)": {
+        "precision": 0.5714285714285714,
+        "recall": 0.17391304347826086,
+        "f1-score": 0.26666666666666666,
+        "support": 23.0
+      },
+      "i)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1.0
+      },
+      "j)": {
+        "precision": 0.3170731707317073,
+        "recall": 0.6724137931034483,
+        "f1-score": 0.430939226519337,
+        "support": 58.0
+      },
+      "k)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 18.0
+      },
+      "l)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 4.0
+      },
+      "m)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 6.0
+      },
+      "n)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 15.0
+      },
+      "o)": {
+        "precision": 0.2,
+        "recall": 0.25,
+        "f1-score": 0.2222222222222222,
+        "support": 20.0
+      },
+      "p)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 4.0
+      },
+      "q)": {
+        "precision": 0.25,
+        "recall": 0.2,
+        "f1-score": 0.2222222222222222,
+        "support": 5.0
+      },
+      "r)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 5.0
+      },
+      "s)": {
+        "precision": 0.16666666666666666,
+        "recall": 0.5,
+        "f1-score": 0.25,
+        "support": 4.0
+      },
+      "t)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1.0
+      },
+      "u)": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 26.0
+      }
+    }
+  },
+  "loss_curve_png": "/root/CipherForge/final-test-data/three-party-rms-pir_20260826-020216/loss_curve.png"
+}
