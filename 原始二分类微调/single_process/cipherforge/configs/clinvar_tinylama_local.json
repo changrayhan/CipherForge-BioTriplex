@@ -1,0 +1,41 @@
+{
+  "task_type": "clinvar",
+  "hf_model": "/root/hf_cache/hub/models--TinyLlama--TinyLlama-1.1B-Chat-v1.0/snapshots/fe8a4ea1ffedaf415f4da2f062534de366a451e6",
+  "bfv_cache_dir": "/root/CipherForge/CipherForge-ClinVar/single_process/cipherforge/checkpoints/bfv_cache",
+  "data_dir": "/root/CipherForge/CipherForge-ClinVar/single_process/data/qa",
+  "project_root": "/root/CipherForge/CipherForge-ClinVar/single_process",
+  "checkpoint_dir": "/root/CipherForge/CipherForge-ClinVar/single_process/cipherforge/checkpoints/clinvar_ckpts/checkpoints",
+  "log_dir": "/root/CipherForge/CipherForge-ClinVar/single_process/cipherforge/checkpoints/clinvar_ckpts/logs",
+
+  "vocab_size": 32000,
+  "hidden_dim": 2048,
+  "poly_degree": 4096,
+  "plain_bits": 30,
+  "scale": 10000,
+  "lam": 80,
+  "pir_block_size": 8,
+  "yes_token_id": 3869,
+  "no_token_id": 1939,
+  "u_layers": 11,
+  "m_layers": 11,
+
+  "lora_rank": 8,
+  "lora_alpha": 16,
+  "lora_dropout": 0.05,
+
+  "max_seq_length": 128,
+  "max_epochs": 3,
+  "batch_size": 16,
+  "learning_rate": 0.0002,
+  "weight_decay": 0.01,
+  "warmup_steps": 100,
+  "val_metric": "val_ce_loss",
+  "patience": 999,
+
+  "N_CRYPTO_U_WORKERS": 8,
+  "N_CRYPTO_M_WORKERS": 8,
+  "N_CRYPTO_S_WORKERS": 1,
+  "USE_CHUNKED_PIPELINE": true,
+  "CHUNK_TOKENS": 128,
+  "seed": 42
+}

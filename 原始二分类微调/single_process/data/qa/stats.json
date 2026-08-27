@@ -1,0 +1,127 @@
+{
+  "source": "clinvar_plain/data/external/clinvar.parquet",
+  "counters": {
+    "records": 3689385,
+    "alleles": 3689385,
+    "skipped_not_snv": 276488,
+    "skipped_clinsig": 1832443,
+    "skipped_not_missense": 1355513,
+    "skipped_not_germline": 31407,
+    "skipped_revstat": 14634,
+    "skipped_no_hgvs": 4,
+    "dedup_conflict_dropped": 0,
+    "final_variants": 178896,
+    "label_counts": {
+      "0": 129546,
+      "1": 49350
+    }
+  },
+  "splits": {
+    "train": {
+      "rows": 10000,
+      "labels": {
+        "0": 5000,
+        "1": 5000
+      },
+      "genes": 3563
+    },
+    "val": {
+      "rows": 9708,
+      "labels": {
+        "0": 5000,
+        "1": 4708
+      },
+      "genes": 1126
+    },
+    "test": {
+      "rows": 10000,
+      "labels": {
+        "0": 5000,
+        "1": 5000
+      },
+      "genes": 1153
+    }
+  },
+  "top_genes": [
+    [
+      "FBN1",
+      1309
+    ],
+    [
+      "DNAH11",
+      1068
+    ],
+    [
+      "TTN",
+      1056
+    ],
+    [
+      "KMT2D",
+      1055
+    ],
+    [
+      "SCN1A",
+      868
+    ],
+    [
+      "OBSCN",
+      716
+    ],
+    [
+      "LDLR",
+      709
+    ],
+    [
+      "COL4A5",
+      678
+    ],
+    [
+      "NEB",
+      648
+    ],
+    [
+      "ADGRV1",
+      626
+    ],
+    [
+      "BRCA2",
+      623
+    ],
+    [
+      "GLA",
+      609
+    ],
+    [
+      "ABCA4",
+      599
+    ],
+    [
+      "BRCA1",
+      582
+    ],
+    [
+      "SACS",
+      529
+    ],
+    [
+      "COL2A1",
+      491
+    ],
+    [
+      "NF1",
+      484
+    ],
+    [
+      "COL7A1",
+      475
+    ],
+    [
+      "COL1A2",
+      471
+    ],
+    [
+      "PAH",
+      471
+    ]
+  ]
+}

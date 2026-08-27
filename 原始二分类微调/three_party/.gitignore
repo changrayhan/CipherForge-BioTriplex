@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
+
+# Runtime artifacts（运行期生成，不提交）
+coordinator/logs/
+coordinator/adapter/
+party_m/checkpoints/
+party_m/checkpoints_backup_stale/
+party_m/keys/
+party_s/db/
+party_u/data/rms_hints/
+party_u/db/
+logs/
+*.log
+*.pid
+
+# 大体积 / 可再生数据
+*.parquet
+*.bin
+*.pt
+*.pth
+*.safetensors
+
+# 模型快照（经 hf-mirror 下载，不入库）
+models/
+*.gguf
+
+# OS / editor
+.DS_Store
+*.swp
+*~
+.idea/
+.vscode/

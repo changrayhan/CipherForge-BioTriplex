@@ -1,0 +1,18 @@
+--extra-index-url https://download.pytorch.org/whl/cu130
+torch==2.10.0+cu130
+transformers==5.2.0
+peft==0.18.1
+seal-python==4.1.2.1
+accelerate>=1.1.0
+datasets>=2.20
+huggingface_hub>=1.0
+safetensors>=0.5
+numpy>=2.0
+pandas>=2.2
+pyarrow>=16
+scikit-learn>=1.5
+scipy>=1.11
+sentencepiece>=0.2
+einops>=0.8
+requests>=2.31
+tqdm>=4.66

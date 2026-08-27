@@ -1,0 +1,13 @@
+{
+  "name": "cipherforge-orchestrator",
+  "version": "0.1.0",
+  "private": true,
+  "description": "演枢台：只编排、只展示、不计算（零第三方依赖）",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

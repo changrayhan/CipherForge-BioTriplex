@@ -1,0 +1,89 @@
+{
+  "required": ["acc", "auprc", "macro_f1"],
+  "tests": {
+    "dli_baseline": {
+      "status": "DONE",
+      "metrics": [
+        { "key": "value", "label": "DLI 明文基线", "value": 0.7921, "unit": "" }
+      ],
+      "conclusion": "预设回放：DLI 明文基线"
+    },
+    "dli_triadft": {
+      "status": "DONE",
+      "metrics": [
+        { "key": "value", "label": "DLI 三方隐私微调", "value": 0.7638, "unit": "" }
+      ],
+      "conclusion": "预设回放：DLI 三方隐私微调"
+    },
+    "l1": {
+      "status": "PRIVACY_PRESERVED",
+      "metrics": [
+        { "key": "value", "label": "L1 攻击成功率", "value": 0.0, "unit": "%" }
+      ],
+      "conclusion": "预设回放：标签不可推断"
+    },
+    "l2": {
+      "status": "PRIVACY_PRESERVED",
+      "metrics": [
+        { "key": "value", "label": "L2 成员推断优势", "value": 0.0, "unit": "" }
+      ],
+      "conclusion": "预设回放：成员推断不显著"
+    },
+    "m1": {
+      "status": "PASS",
+      "metrics": [
+        { "key": "value", "label": "M1 密钥不出域", "value": "通过", "unit": "" }
+      ],
+      "conclusion": "预设回放：sk_M 未离开 M 节点"
+    },
+    "m2": {
+      "status": "PASS",
+      "metrics": [
+        { "key": "value", "label": "M2 明文标签不可见", "value": "通过", "unit": "" }
+      ],
+      "conclusion": "预设回放：S/U 无法获得真实标签"
+    },
+    "eia": {
+      "status": "INCONCLUSIVE",
+      "metrics": [
+        { "key": "value", "label": "EIA 熵增", "value": 0.0, "unit": "" }
+      ],
+      "conclusion": "预设回放：EIA 指标"
+    },
+    "grad_max_abs": {
+      "status": "DONE",
+      "metrics": [
+        { "key": "value", "label": "梯度最大绝对值", "value": 0.0, "unit": "" }
+      ],
+      "conclusion": "预设回放：梯度统计"
+    },
+    "grad_rel": {
+      "status": "DONE",
+      "metrics": [
+        { "key": "value", "label": "梯度相对误差", "value": 0.0, "unit": "" }
+      ],
+      "conclusion": "预设回放：梯度误差"
+    },
+    "step_time": {
+      "status": "DONE",
+      "metrics": [
+        { "key": "value", "label": "单步耗时", "value": 0.0, "unit": "s" }
+      ],
+      "conclusion": "预设回放：性能指标"
+    },
+    "comm": {
+      "status": "DONE",
+      "metrics": [
+        { "key": "value", "label": "通信量", "value": 0, "unit": "bytes" }
+      ],
+      "conclusion": "预设回放：通信量"
+    },
+    "offline_db": {
+      "status": "DONE",
+      "metrics": [
+        { "key": "value", "label": "离线密文库", "value": 1, "unit": "" }
+      ],
+      "conclusion": "预设回放：离线密文库可用"
+    }
+  }
+}

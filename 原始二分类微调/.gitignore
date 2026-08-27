@@ -1,0 +1,11 @@
+# 顶层忽略（各模式另有自己的 .gitignore）
+__pycache__/
+*.pyc
+*.log
+*.bin
+*.pt
+*.pth
+*.safetensors
+.DS_Store
+.idea/
+.vscode/
