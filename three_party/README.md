@@ -4,6 +4,11 @@
 隐私保护微调（TinyLlama-1.1B + LoRA + BFV 同态加密 + S3PIR）。与
 `single_process/`（单进程融合版）完全独立、互不隶属。
 
+> **2026-08-27 重构（论文拓扑）**：主控台（coordinator）已从 U 进程中独立出来，
+> U/M/S 三方按 TriadFT 论文的消息流**直连**——U→M（H_U、C_U）、M→S（H_M）、
+> S→M（s_S）、U↔S（PIR）。U 永不接触明文 H_M、明文份额 s_S、全词表 logits 或
+> M 的 LoRA 权重。详见 [docs/10-重构说明-主控台独立与论文拓扑.md](docs/10-重构说明-主控台独立与论文拓扑.md)。
+
 - 任务：ClinVar 变异致病性二分类（`Yes` = 致病 / `No` = 良性）
 - 模型：`TinyLlama/TinyLlama-1.1B-Chat-v1.0`（22 层，U/M 各 11 层）
 - 数据：5k/类 QA（train 10,000 / val 9,708 / test 10,000，按基因切分互不重叠）
@@ -15,10 +20,10 @@
 
 | 角色 | 目录 | 职责 | 运行设备 |
 |---|---|---|---|
-| U（用户/数据方） | `party_u/` | 持有明文样本与标签、嵌入 + 前 11 层、发 PIR 查询、DP 加噪 | GPU |
-| M（模型方） | `party_m/` | 后 11 层 + LoRA、梯度更新、BFV 密钥（sk 私钥）、checkpoint | GPU + CPU（SEAL worker） |
+| U（用户/数据方） | `party_u/` | **完整 U 节点**：持有明文样本与标签、PartyU（嵌入 + 底部层）、PIR 客户端、PRG 掩码、DP 加噪；U→M 直发 H_U/C_U | GPU |
+| M（模型方） | `party_m/` | 主干 + LoRA、梯度更新、BFV 密钥（sk 私钥）；M→S 直发 H_M，收 S 直推 s_S | GPU + CPU（SEAL worker） |
 | S（服务方） | `party_s/` | lm_head(V 矩阵)、BFV 密文库、S3PIR hints、监督位置 logits | CPU（BFV worker 亦 CPU） |
-| 协调者 | `coordinator/` | 训练/验证/导出/评测编排（独立于三方之外） | CPU + GPU（U 侧） |
+| 协调者（主控台） | `coordinator/` | **独立控制面**：不持有数据、不中转张量；只做 init 编排、训练/验证循环、指标汇总、checkpoint 存取、adapter 导出 | CPU |
 
 `shared/` 是三方共享的只读 Python 库（节点框架、协议、BFV/S3PIR 后端、模型切分、
 训练器）；每个 party 目录只包含自身节点入口与其私有的数据/密钥/产物。

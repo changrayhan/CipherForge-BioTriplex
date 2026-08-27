@@ -52,33 +52,39 @@ kill_all() {
 }
 
 ############################################
-# 工具: 启动 S/M
+# 工具: 启动 U/S/M
 ############################################
 start_sm() {
-  say "START_S/M on :9003 / :9002"
+  say "START_U/S/M on :9001 / :9003 / :9002"
+  python -u -s party_u/main_u.py --port 9001 --model_path "$CF_MODEL_PATH" \
+    --data_dir party_u/data > "$LOG_DIR/party_u_${PHASE}.log" 2>&1 &
+  UPID=$!
   python -u -s party_s/main_s.py --port 9003 --db_dir party_s/db --device cpu \
     > "$LOG_DIR/party_s_${PHASE}.log" 2>&1 &
   SPID=$!
   python -u -s party_m/main_m.py --port 9002 --keys_dir party_m/keys \
     > "$LOG_DIR/party_m_${PHASE}.log" 2>&1 &
   MPID=$!
-  say "  SPID=$SPID  MPID=$MPID"
+  say "  UPID=$UPID SPID=$SPID  MPID=$MPID"
+  echo "$UPID" > /tmp/lm_upid
   echo "$SPID" > /tmp/lm_spid
   echo "$MPID" > /tmp/lm_mpid
   # wait for listening; RMS 节点需要 dump hints，rms 模式有时 ~36s；用 python 探活避免 ss 在容器里行为不一致
-  for i in $(seq 1 90); do
+  for i in $(seq 1 120); do
     if python3 -c "
 import socket
+s0=socket.socket(); r0=s0.connect_ex(('127.0.0.1',9001)); s0.close()
 s1=socket.socket(); r1=s1.connect_ex(('127.0.0.1',9003)); s1.close()
 s2=socket.socket(); r2=s2.connect_ex(('127.0.0.1',9002)); s2.close()
-import sys; sys.exit(0 if r1==0 and r2==0 else 1)
+import sys; sys.exit(0 if r0==0 and r1==0 and r2==0 else 1)
 " 2>/dev/null; then
-      say "  S/M listening (took ${i}s)"
+      say "  U/S/M listening (took ${i}s)"
       return 0
     fi
     sleep 1
   done
-  say "  S/M never came up in 90s!"
+  say "  U/S/M never came up in 120s!"
+  tail -20 "$LOG_DIR/party_u_${PHASE}.log" 2>&1
   tail -20 "$LOG_DIR/party_s_${PHASE}.log" 2>&1
   tail -20 "$LOG_DIR/party_m_${PHASE}.log" 2>&1
   return 1

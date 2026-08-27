@@ -38,16 +38,18 @@ OUT_DIR="${OUT_DIR:-/root/CipherForge/test-data}"
 LOG_DIR="$OUT_DIR/logs/$SCENARIO"
 mkdir -p "$LOG_DIR"
 
-# 杀掉可能残留的 S/M 端口占用，避免段间重启冲突
-fuser -k 9002/tcp 9003/tcp 2>/dev/null || true
+# 杀掉可能残留的 U/S/M 端口占用，避免段间重启冲突
+fuser -k 9001/tcp 9002/tcp 9003/tcp 2>/dev/null || true
 sleep 2
 
 # Coordinator 输出与 metrics 默认走 CONFIG 路径；启动器额外复制到 OUT_DIR
 SRC_COORD_LOG="$ROOT/coordinator/logs/coordinator.log"
+SRC_PARTY_U_LOG="$ROOT/coordinator/logs/party_u.log"
 SRC_PARTY_M_LOG="$ROOT/coordinator/logs/party_m.log"
 SRC_PARTY_S_LOG="$ROOT/coordinator/logs/party_s.log"
 mkdir -p "$ROOT/coordinator/logs"
 rm -f "$ROOT/coordinator/logs/coordinator.log"
+rm -f "$ROOT/coordinator/logs/party_u.log"
 rm -f "$ROOT/coordinator/logs/party_m.log"
 rm -f "$ROOT/coordinator/logs/party_s.log"
 rm -f "$ROOT/coordinator/logs/epoch_metrics.jsonl"
@@ -59,8 +61,8 @@ echo "=== 配置: $CONFIG | scenario=$SCENARIO | max_train_steps=$MAX_STEPS | ba
 echo "=== OUT_DIR=$OUT_DIR  LOG_DIR=$LOG_DIR ==="
 
 cleanup() {
-    echo "=== 清理 S/M 进程 ==="
-    kill "$S_PID" "$M_PID" 2>/dev/null || true
+    echo "=== 清理 U/S/M 进程 ==="
+    kill "$U_PID" "$S_PID" "$M_PID" 2>/dev/null || true
 }
 trap cleanup EXIT
 
@@ -82,6 +84,12 @@ if [ -n "${PIR_MODE:-}" ]; then
 fi
 
 T_START=$(date +%s)
+echo "=== 启动 Party U ==="
+"$PYTHON" -u -s "$ROOT/party_u/main_u.py" --port 9001 --model_path "$CF_MODEL_PATH" \
+    --data_dir "$ROOT/party_u/data" > "$LOG_DIR/party_u.log" 2>&1 &
+U_PID=$!
+echo "U PID: $U_PID"
+
 echo "=== 启动 Party S ==="
 "$PYTHON" -u -s "$ROOT/party_s/main_s.py" --port 9003 --db_dir "$ROOT/party_s/db" --device cpu \
     > "$LOG_DIR/party_s.log" 2>&1 &
@@ -93,6 +101,15 @@ echo "=== 启动 Party M ==="
     --model_path "$CF_MODEL_PATH" > "$LOG_DIR/party_m.log" 2>&1 &
 M_PID=$!
 echo "M PID: $M_PID"
+
+echo "=== 等待 U 端口就绪 ==="
+for i in $(seq 1 120); do
+    if fuser -s 9001/tcp 2>/dev/null; then
+        echo "U 端口就绪 (${i}s)"
+        break
+    fi
+    sleep 1
+done
 
 echo "=== 等待 S 端口就绪 ==="
 for i in $(seq 1 30); do
@@ -121,6 +138,7 @@ echo "Coordinator exit code: $rc (wall=$((T_END-T_START))s)"
 
 # 同步 copy 日志到 test-data，便于后续聚合
 cp -f "$ROOT/coordinator/logs/coordinator.log" "$LOG_DIR/coordinator.log" 2>/dev/null || true
+cp -f "$ROOT/coordinator/logs/party_u.log"   "$LOG_DIR/party_u.log"   2>/dev/null || true
 cp -f "$ROOT/coordinator/logs/party_m.log"   "$LOG_DIR/party_m.log"   2>/dev/null || true
 cp -f "$ROOT/coordinator/logs/party_s.log"   "$LOG_DIR/party_s.log"   2>/dev/null || true
 

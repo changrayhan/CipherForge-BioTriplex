@@ -15,16 +15,18 @@ fi
 mkdir -p "$ROOT/coordinator/logs"
 
 cleanup() {
-  kill "$S_PID" "$M_PID" 2>/dev/null || true
+  kill "$U_PID" "$S_PID" "$M_PID" 2>/dev/null || true
 }
 trap cleanup EXIT
 
+"$PYTHON" -u -s "$ROOT/party_u/main_u.py" --port 9001 --model_path "$CF_MODEL_PATH" --data_dir "$ROOT/party_u/data" > "$ROOT/coordinator/logs/party_u.log" 2>&1 &
+U_PID=$!
 "$PYTHON" -u -s "$ROOT/party_s/main_s.py" --port 9003 --db_dir "$ROOT/party_s/db" --device "${S_DEVICE:-cpu}" > "$ROOT/coordinator/logs/party_s.log" 2>&1 &
 S_PID=$!
 "$PYTHON" -u -s "$ROOT/party_m/main_m.py" --port 9002 --keys_dir "$ROOT/party_m/keys" > "$ROOT/coordinator/logs/party_m.log" 2>&1 &
 M_PID=$!
 
-sleep 3
+sleep 5
 "$PYTHON" -u -s "$ROOT/coordinator/main.py" --config "$ROOT/coordinator/three_party_config.json" "$@"
 rc=$?
 echo "coordinator_rc=$rc"

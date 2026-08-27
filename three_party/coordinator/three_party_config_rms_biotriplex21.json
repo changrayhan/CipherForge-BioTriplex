@@ -11,7 +11,8 @@
   "rms_db_dir": "/root/autodl-tmp/CipherForge-RMS/rms_db",
   "nodes": {
     "M": "http://127.0.0.1:9002",
-    "S": "http://127.0.0.1:9003"
+    "S": "http://127.0.0.1:9003",
+    "U": "http://127.0.0.1:9001"
   },
   "vocab_size": 32000,
   "hidden_dim": 2048,

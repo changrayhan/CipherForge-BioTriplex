@@ -56,7 +56,10 @@ class SRole(RoleHandler):
 
     # ---- INIT -------------------------------------------------------------
     def act_init_runtime(self, session, params, stage, step, trace_id):
-        self.runtime["worker_config"] = dict(params)
+        wc = dict(params)
+        # 论文拓扑：S -> M 直连（s_S 份额直推 M）
+        self.runtime["m_url"] = str(wc.pop("m_url", "") or "")
+        self.runtime["worker_config"] = wc
         return ([{"type": "task", "payload": {"msg": "S runtime 配置就绪"}}], {}, {})
 
     def act_build_enc_db(self, session, params, stage, step, trace_id):
@@ -68,6 +71,8 @@ class SRole(RoleHandler):
         ):
             wc.setdefault(k, int(params.get(k, dflt)))
         self.runtime["worker_config"] = wc
+        if params.get("m_url"):
+            self.runtime["m_url"] = str(params.get("m_url"))
         pk_pem = _unb64(params["pk_pem_b64"])
         backend = self._backend()
         backend.attach_public_key(pk_pem)
@@ -147,7 +152,37 @@ class SRole(RoleHandler):
         self.runtime["prg_seed"] = prg_seed
         from shared.model.model_splitting import clear_safetensor_cache
         clear_safetensor_cache()
+        # ---- T1 experiment capture (env-gated, evaluation ground truth) ----
+        cap = os.environ.get("CF_S_CAPTURE_DIR", "")
+        if cap:
+            import hashlib as _hashlib
+            os.makedirs(cap, exist_ok=True)
+            V = party_s.V_weight.detach().cpu().float()
+            class_ids = [int(t) for t in (wc.get("class_token_ids") or [])]
+            if not class_ids:
+                yes_id = int(wc.get("yes_token_id", -1))
+                no_id = int(wc.get("no_token_id", -1))
+                class_ids = [yes_id, no_id]
+            v_rows = V[class_ids].numpy().astype(np.float32)  # (C, H)
+            np.savez(
+                os.path.join(cap, "v_rows.npz"),
+                v_rows=v_rows,
+                class_token_ids=np.asarray(class_ids, dtype=np.int64),
+                v_hash=_hashlib.sha256(V.numpy().tobytes()).hexdigest(),
+            )
         return ([{"type": "pir", "payload": {"msg": "PRG 种子已就绪（仅 U/S 共享）"}}], {}, {})
+
+    def _m_client(self):
+        if "m_client" not in self.runtime:
+            m_url = self.runtime.get("m_url") or ""
+            if not m_url:
+                raise RuntimeError("S node requires m_url (M peer) for direct S->M edges")
+            from shared.remote_protocol import RemoteClient
+            self.runtime["m_client"] = RemoteClient(
+                m_url,
+                timeout=float(self.runtime["worker_config"].get("http_timeout_s", 300)),
+            )
+        return self.runtime["m_client"]
 
     def _V_f32(self):
         import logging as _log
@@ -246,11 +281,20 @@ class SRole(RoleHandler):
             "step": int(params.get("step", step)),
         })
         shares = np.asarray(result["s_shares"], dtype=np.int64)
+        # 论文拓扑：s_S = scale·a_t - r_t 由 S 直推 M（receive_share），
+        # 绝不经过 U / coordinator。
+        r = self._m_client().action(
+            trace_id, "RECONSTRUCT", int(params.get("step", step)),
+            "receive_share",
+            {"s_shares_b64": _b64(shares.tobytes()), "n": len(positions)},
+        )
+        if not r.get("ok"):
+            raise RuntimeError(f"M receive_share failed: {r.get('error')}")
         return (
             [{"type": "message", "payload": {"edge": "S->M", "bytes": shares.nbytes,
                                              "msg": "份额已发送"}}],
             {},
-            {"s_shares_b64": _b64(shares.tobytes()), "n": len(positions)},
+            {"pushed": True, "n": len(positions)},
         )
 
     def act_rms_parity(self, session, params, stage, step, trace_id):
@@ -337,82 +381,36 @@ class SRole(RoleHandler):
         )
 
     # ---- EVAL --------------------------------------------------------------
-    def act_val(self, session, params, stage, step, trace_id):
-        """Run ClinVar validation forward at the SAME last-answer position as
-        baseline ``evaluate_auprc.predict_probs`` and return the FULL vocab logits.
+    def act_val_head(self, session, params, stage, step, trace_id):
+        """Validation-time output-head forward: return ONLY the class logits.
 
-        Contract (matches ``single_process/baseline/scripts/evaluate_auprc.py``):
-            U passes ``input_ids`` and ``attention_mask`` for each sample
-            (already tokenized on U with the same prompt template). For every
-            sample we compute ``last_pos = attention_mask.sum(dim=1) - 1`` (last
-            non-pad position), then ``logits[last_pos] @ V.T`` ∈ ℝ^{vocab}.
-
-        U receives the per-sample full-vocab logits and runs
-            softmax([logits[yes_id], logits[no_id]]) → P(Yes)
-        to mirror baseline exactly.
-
-        ``positions`` (legacy 2-token argmax API) is still supported for
-        backwards compatibility — only used for token-accuracy debug logging.
+        Paper-faithful: U never receives full-vocab logits (which would allow
+        linear recovery of V).  S projects H_M at the scoring positions onto
+        the task's class token ids and returns a (B, C) float32 tensor.
         """
         import numpy as np
         H_M = torch.from_numpy(
             np.frombuffer(_unb64(params["H_M"]), dtype=np.float32).copy()
         ).view(*params["H_M_shape"])
-        attn = params.get("attention_mask")  # [[B,S]] or None
-        monitor_positions = params.get("monitor_positions")  # list[int] of length B (legacy)
-        positions_legacy = params.get("positions")  # [[B,2]] or None
-
-        # Scoring positions. The coordinator passes the ▁ prefix position
-        # (``first``): training's y_shift makes logits[first] target the
-        # Yes/No token at first+1, so val must score there to match. When
-        # absent, fall back to the last non-pad position (baseline format).
-        if monitor_positions is not None:
-            last_pos = torch.tensor(monitor_positions, dtype=torch.long)
-        elif attn is not None:
-            attn_t = torch.tensor(attn, dtype=torch.long)
-            last_pos = attn_t.sum(dim=1) - 1  # (B,)
-        else:
-            # Fallback: last sequence index per sample (assumes no padding).
-            B = H_M.shape[0]
-            last_pos = torch.full((B,), H_M.shape[1] - 1, dtype=torch.long)
-
-        # 1) Compute full vocab logits at last_pos: (B, V)
-        # H_M comes from base64 (CPU); move to GPU to match V, then return CPU.
-        V = self._V_f32()            # V lives on GPU
-        device = V.device
-        H_gpu = H_M.to(device)
-        # 逐样本取 last_pos 位置的隐状态。不能把 per-sample 的 last_pos
-        # 直接当扁平行号用（H_flat[last_pos] 会取到第 0 个样本的对应 token，
-        # 导致 B>1 时验证 logits 串位、等长样本概率完全相同）。
-        row_idx = torch.arange(H_gpu.shape[0], device=device)
-        logits_last = H_gpu[row_idx, last_pos] @ V.t()  # (B, V) on GPU
-        # Match baseline dtype: cast to float32 for transport.
-        logits_last = logits_last.detach().cpu().float().contiguous()
-        logits_b64 = _b64(np.ascontiguousarray(logits_last.numpy()).tobytes())
-
-        # 2) Legacy argmax at the 2-token answer positions (for debugging only).
-        argmax_legacy: List[List[int]] = []
-        if positions_legacy is not None:
-            flat = [p for row in positions_legacy for p in row]
-            z_legacy = self._logits_at(H_M, flat)
-            z_legacy2 = z_legacy.view(len(positions_legacy), 2, -1)
-            argmax_legacy = z_legacy2.argmax(dim=-1).cpu().tolist()
-
-        # 3) Per-sample P(Yes) at last_pos using Yes/No softmax (same path as
-        #    baseline). Returned for the live-loss monitor (mirrors baseline CE).
-        p_yes = self._monitor_p_yes_at_logits(logits_last)
-
+        positions = params.get("positions")
+        if not positions:
+            raise RuntimeError("val_head requires positions (score positions)")
+        wc = self.runtime["worker_config"]
+        class_ids = [int(t) for t in (wc.get("class_token_ids") or [])]
+        if not class_ids:
+            yes_id = int(wc.get("yes_token_id", -1))
+            no_id = int(wc.get("no_token_id", -1))
+            class_ids = [yes_id, no_id]
+        z = self._logits_at(H_M, [int(i) for i in positions]).float()  # (B, V)
+        z_cls = z[:, class_ids].contiguous()                            # (B, C)
+        logits_b64 = _b64(np.ascontiguousarray(z_cls.numpy()).tobytes())
         return (
-            [{"type": "compute", "payload": {"msg": "val forward 完成 (full logits)"}}],
+            [{"type": "compute", "payload": {"msg": "val_head: class logits only"}}],
             {},
             {
-                # New (full-logits) API used by the fixed remote_val:
                 "logits_b64": logits_b64,
-                "logits_shape": list(logits_last.shape),
-                "last_positions": last_pos.cpu().tolist(),
-                "p_yes": p_yes,
-                # Legacy (kept for compatibility):
-                "argmax": argmax_legacy,
+                "logits_shape": list(z_cls.shape),
+                "class_token_ids": class_ids,
             },
         )
 
@@ -475,7 +473,7 @@ SRole.actions = {
     "share_compute": SRole.act_share_compute,
     "rms_parity": SRole.act_rms_parity,
     "db_download": SRole.act_db_download,
-    "val": SRole.act_val,
+    "val_head": SRole.act_val_head,
     "shutdown": SRole.act_shutdown,
 }
 

@@ -597,7 +597,8 @@ def run_three(run_dir: Path, params: dict, max_steps: int, mode: dict, dry_run: 
     u_proc = m_proc = s_proc = None
     u_proc = subprocess.Popen(
         [str(PY), "-u", "-s", str(ROOT / "party_u" / "main_u.py"),
-         "--port", "9001", "--data_dir", str(ROOT / "party_u" / "data"),
+         "--port", "9001", "--model_path", SNAP,
+         "--data_dir", str(ROOT / "party_u" / "data"),
          "--metrics_dir", str(logs), "--presets_json", presets_json],
         stdout=u_log, stderr=subprocess.STDOUT, env=env, cwd=str(ROOT), start_new_session=True,
     )

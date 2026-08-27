@@ -147,7 +147,8 @@ class RoleHandler:
     no_cache_actions = {
         "trunk_forward", "val_forward", "head_forward",
         "fetch_rows", "share_compute", "rms_parity", "db_download",
-        "val", "gather_checkpoint",
+        "val", "val_head", "receive_share", "gather_checkpoint",
+        "run_eval",
     }
 
     def __init__(self, node_id: str, config: Dict[str, Any]) -> None:

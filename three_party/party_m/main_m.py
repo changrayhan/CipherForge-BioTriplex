@@ -83,6 +83,8 @@ class MRole(RoleHandler):
     def act_init_runtime(self, session, params, stage, step, trace_id):
         wc = params
         self.runtime["worker_config"] = wc
+        # 论文拓扑：M -> S 直连（H_M / share_compute 控制），S -> M 直连（s_S）
+        self.runtime["s_url"] = str(params.get("s_url") or wc.get("s_url") or "")
         model_path = self.config["model_path"]
         sk_pem = self.runtime.get("sk_pem")
         pk_pem = self.runtime.get("pk_pem")
@@ -139,6 +141,18 @@ class MRole(RoleHandler):
             logger.warning("M key self-check failed: %s", exc)
         return ([{"type": "task", "payload": {"msg": "M runtime 就绪"}}], {}, {})
 
+    def _s_client(self):
+        if "s_client" not in self.runtime:
+            s_url = self.runtime.get("s_url") or ""
+            if not s_url:
+                raise RuntimeError("M node requires s_url (S peer) for direct M->S edges")
+            from shared.remote_protocol import RemoteClient
+            self.runtime["s_client"] = RemoteClient(
+                s_url,
+                timeout=float(self.runtime["worker_config"].get("http_timeout_s", 300)),
+            )
+        return self.runtime["s_client"]
+
     # ---- FORWARD -----------------------------------------------------------
     def act_trunk_forward(self, session, params, stage, step, trace_id):
         import numpy as np
@@ -164,13 +178,38 @@ class MRole(RoleHandler):
         H_M = m_result["H_M"]
         if torch.cuda.is_available():
             logger.info("M gpu_mem after fwd: %.0fMB", torch.cuda.memory_allocated() / 1048576)
-        # 返回 detach 的 CPU float32（S 侧会再转 bf16，等价无损）；M 内部保留带图引用
-        import numpy as np
+        # 先建 step_state：S 的 share_compute 会在本请求尚未返回时并发直推
+        # s_S 到 receive_share，必须保证它写入的是同一个 dict（否则会被覆盖）。
+        session["state"]["step_state"] = {
+            "step": step, "p_yes": None,
+            "cts": None, "valid_indices": None, "expected_shape": None,
+            "s_shares": None,
+        }
+        # 论文拓扑：H_M 由 M 直发 S（head_forward），绝不再返回给 U。
+        # S 计算 monitor p_yes 后，M 再请求 S 计算并直推 s_S = a_t - r_t 给 M。
         h_bytes = np.ascontiguousarray(H_M.detach().cpu().float().numpy()).tobytes()
+        s_cli = self._s_client()
+        r1 = s_cli.action(trace_id, "FORWARD", step, "head_forward", {
+            "H_M": _b64(h_bytes),
+            "H_M_shape": list(H_M.shape),
+            "monitor_positions": params.get("monitor_positions"),
+        })
+        if not r1.get("ok"):
+            raise RuntimeError(f"S head_forward failed: {r1.get('error')}")
+        p_yes = r1["result"].get("monitor_p_yes")
+        positions = [int(i) for i in (params.get("valid_indices") or [])]
+        r2 = s_cli.action(trace_id, "BACKWARD", step, "share_compute", {
+            "positions": positions,
+            "step": step,
+        })
+        if not r2.get("ok"):
+            raise RuntimeError(f"S share_compute failed: {r2.get('error')}")
+        # 保存本步状态：等 U 的 C_U 和 S 的 s_S 都到齐后由 lora_update 组合
+        session["state"]["step_state"]["p_yes"] = p_yes
         return (
-            [{"type": "message", "payload": {"edge": "U->M", "bytes": len(h_bytes), "msg": "H_U 接收 → H_M 发送"}}],
+            [{"type": "message", "payload": {"edge": "M->S", "bytes": len(h_bytes), "msg": "H_M 直发 S"}}],
             {},
-            {"H_M": _b64(h_bytes), "H_M_shape": list(H_M.shape)},
+            {"p_yes": p_yes},
         )
 
     def act_val_forward(self, session, params, stage, step, trace_id):
@@ -188,33 +227,58 @@ class MRole(RoleHandler):
         party_m.model.eval()
         try:
             with torch.no_grad():
-                m_result = party_m.forward(H_U, attention_mask=attn)
-                H_M = m_result["H_M"]
+                # 验证路径直接走 model.forward（不走 reentrant checkpoint，
+                # 避免 no_grad 下 checkpoint 语义问题），也不污染训练缓存。
+                H_M = party_m.model.forward(H_U.to(party_m.device))
         finally:
             if was_training:
                 party_m.model.train()
         party_m._last_H_U = None
         party_m._last_H_M = None
         party_m._last_attention_mask = None
-        import numpy as np
+        # 论文拓扑：M -> S 直发 H_M 做输出头前向；S 只返回类别 logits（B, C），
+        # 绝不返回全词表 logits，也不返回 H_M。
         h_bytes = np.ascontiguousarray(H_M.detach().cpu().float().numpy()).tobytes()
+        s_cli = self._s_client()
+        r = s_cli.action(trace_id, "EVAL", 0, "val_head", {
+            "H_M": _b64(h_bytes),
+            "H_M_shape": list(H_M.shape),
+            "positions": params.get("positions"),
+        })
+        if not r.get("ok"):
+            raise RuntimeError(f"S val_head failed: {r.get('error')}")
         return (
-            [{"type": "compute", "payload": {"msg": "val forward"}}], {},
-            {"H_M": _b64(h_bytes), "H_M_shape": list(H_M.shape)},
+            [{"type": "compute", "payload": {"msg": "val forward (class logits only)"}}], {},
+            r["result"],
         )
 
     # ---- BACKWARD / RECONSTRUCT / UPDATE ------------------------------------
     def act_grad_reconstruct(self, session, params, stage, step, trace_id):
-        session["state"]["grad"] = {
-            "cts": [_unb64(c) for c in params["cts"]],
-            "s_shares": params["s_shares"],
-            "valid_indices": params["valid_indices"],
-            "expected_shape": params["expected_shape"],
-        }
+        """Receive C_U = Enc(-V_y + r_t) directly from U (paper edge U->M)."""
+        st = session["state"].setdefault("step_state", {})
+        st["cts"] = [_unb64(c) for c in params["cts"]]
+        st["valid_indices"] = params.get("valid_indices")
+        st["expected_shape"] = params.get("expected_shape")
         return (
             [{"type": "crypto", "payload": {"msg": f"梯度重建参数就绪: {len(params['cts'])} cts"}}],
             {},
             {"n_cts": len(params["cts"])},
+        )
+
+    def act_receive_share(self, session, params, stage, step, trace_id):
+        """Receive s_S = scale·a_t - r_t directly from S (paper edge S->M)."""
+        import numpy as np
+        wc = self.runtime["worker_config"]
+        s_shares_raw = _unb64(params["s_shares_b64"])
+        n = int(params.get("n", 0))
+        dim = int(wc["hidden_dim"])
+        arr = np.frombuffer(s_shares_raw, dtype=np.int64).reshape(n, dim)
+        st = session["state"].setdefault("step_state", {})
+        st["s_shares"] = arr.tolist()
+        return (
+            [{"type": "message", "payload": {"edge": "S->M", "bytes": len(s_shares_raw), "msg": "s_S 直收"}}],
+            {},
+            {"n_shares": n},
         )
 
     def act_debug_decrypt(self, session, params, stage, step, trace_id):
@@ -232,16 +296,36 @@ class MRole(RoleHandler):
 
     def act_lora_update(self, session, params, stage, step, trace_id):
         party_m = self.runtime["party_m"]
-        grad = session["state"].pop("grad", None)
-        if grad is None:
-            raise RuntimeError("grad_reconstruct must run before lora_update")
+        st = session["state"].get("step_state") or {}
+        if not st.get("cts"):
+            raise RuntimeError("grad_reconstruct (C_U from U) must arrive before lora_update")
+        if not st.get("s_shares"):
+            raise RuntimeError("receive_share (s_S from S) must arrive before lora_update")
         ack = party_m.backward_and_update({
-            "ct_from_U": grad["cts"],
-            "s_share": grad["s_shares"],
-            "valid_indices": grad["valid_indices"],
-            "expected_shape": tuple(grad["expected_shape"]),
+            "ct_from_U": st["cts"],
+            "s_share": st["s_shares"],
+            "valid_indices": st.get("valid_indices"),
+            "expected_shape": tuple(st["expected_shape"]) if st.get("expected_shape") else None,
             "step": step,
         })
+        session["state"].pop("step_state", None)
+        # ---- T1 experiment capture (env-gated, evaluation ground truth) ----
+        cap = os.environ.get("CF_M_CAPTURE_DIR", "")
+        if cap:
+            import json as _json
+            os.makedirs(cap, exist_ok=True)
+            lora_state = {}
+            for name, p in party_m.model.named_parameters():
+                if p.requires_grad:
+                    lora_state[name] = p.detach().cpu().clone()
+            torch.save(lora_state, os.path.join(cap, f"w_step_{step:05d}.pt"))
+            with open(os.path.join(cap, "meta.jsonl"), "a", encoding="utf-8") as f:
+                f.write(_json.dumps({
+                    "step": int(step),
+                    "loss": ack.get("loss"),
+                    "g_absmax": ack.get("g_absmax"),
+                    "g_meanabs": ack.get("g_meanabs"),
+                }) + "\n")
         return (
             [{"type": "monitor", "payload": {"msg": "LoRA 更新完成", "loss": ack.get("loss")}}],
             {
@@ -356,6 +440,7 @@ MRole.actions = {
     "trunk_forward": MRole.act_trunk_forward,
     "val_forward": MRole.act_val_forward,
     "grad_reconstruct": MRole.act_grad_reconstruct,
+    "receive_share": MRole.act_receive_share,
     "debug_decrypt": MRole.act_debug_decrypt,
     "lora_update": MRole.act_lora_update,
     "gather_checkpoint": MRole.act_gather_checkpoint,
